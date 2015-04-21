@@ -8,7 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name="index.html")),
-    url(r'^login$', auth_views.login, name="login"),
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^agenda$', ListView.as_view(model=BBSitting)),
     url(r'^get/(?P<pk>\d+)$', DetailView.as_view(model=BBSitting), name="detail"),
     url(r'^new$', CreateView.as_view(model=BBSitting)),

@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 <!doctype html>
 <html>
     <head>
@@ -9,14 +10,19 @@
         {% block scripts %}{% endblock %}
     </head>
     <body>
-        Baby Sitting sharing
-        <div>by Echos Kids</div>
+        {% trans "Baby Sitting sharing" %}
+        <div>{% trans "by Echos Kids" %}</div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'auth_logout' %}">{% trans "logout" %}</a>
+        {% else %}
+        <a href="{% url 'auth_login' %}">{% trans "login" %}</a>
+        {% endif %}
         {% block content %}{% endblock %}
         <footer>
             <nav>
-                <a href="">CGU</a>
-                <a href="">Mentions légales</a>
-                <a href="">Contact</a>
+                <a href="">{% trans "Terms" %}</a>
+                <a href="">{% trans "Legal statement" %}</a>
+                <a href="">{% trans "Contact" %}</a>
             </nav> 
         </footer>
     </body>

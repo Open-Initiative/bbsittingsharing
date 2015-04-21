@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block content %}
-<h2>On s'organise pour partager un babysitting ?</h2>
+<h2>{% trans "Should we organize to share a babysitting?" %}</h2>
 
 {% if user.is_authenticated %}
 <ul>
-    <li>Le concept</li>
-    <li>Qui Sommes-nous ?</li>
-    <li>Soyez serein</li>
+    <li>{% trans "The concept" %}</li>
+    <li>{% trans "Who are we?" %}</li>
+    <li>{% trans "Keep calm" %}</li>
 </ul>
 {% else %}
 <ul>
-    <li><a href="">Parrainer</a></li>
-    <li><a href="">S'inscrire</a></li>
-    <li><a href="{% url 'login' %}">Se connecter</a></li>
+    <li><a href="">{% trans "Refer" %}</a></li>
+    <li><a href="{% url 'registration_register' %}">{% trans "Register" %}</a></li>
+    <li><a href="{% url 'auth_login' %}">{% trans "Login" %}</a></li>
 </ul>
 {% endif %}
 {% endblock %}
