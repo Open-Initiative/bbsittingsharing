@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load bbsitting_tags %}
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('#calendar').fullCalendar({ 'events': {{bbsitting_list|bbjson}}});
+    });
+</script>
+{% endblock %}
+{% block content %}
+    <div id="calendar"></div>
+    {{bbsitting_list|bbjson}}
+{% endblock %}

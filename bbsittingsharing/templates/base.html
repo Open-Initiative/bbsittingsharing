@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+    <head>
+        <link rel='stylesheet' href='{% static "css/fullcalendar.css" %}' />
+        <script src='{% static "js/jquery.min.js" %}'></script>
+        <script src='{% static "js/moment.min.js" %}'></script>
+        <script src='{% static "js/fullcalendar.js" %}'></script>
+        {% block scripts %}{% endblock %}
+    </head>
+    <body>
+        Baby Sitting sharing
+        <div>by Echos Kids</div>
+        {% block content %}{% endblock %}
+        <footer>
+            <nav>
+                <a href="">CGU</a>
+                <a href="">Mentions légales</a>
+                <a href="">Contact</a>
+            </nav> 
+        </footer>
+    </body>
+</html>
