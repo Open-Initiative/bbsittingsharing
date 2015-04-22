@@ -17,6 +17,7 @@
         {% else %}
         <a href="{% url 'auth_login' %}">{% trans "login" %}</a>
         {% endif %}
+        <a href="{% url 'info' %}">{% trans "information" %}</a>
         {% block content %}{% endblock %}
         <footer>
             <nav>
