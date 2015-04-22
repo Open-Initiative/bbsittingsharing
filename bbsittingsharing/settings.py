@@ -48,6 +48,7 @@ USE_TZ = True
 
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
+AUTH_USER_MODEL = 'bbsittingsharing.Parent'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/

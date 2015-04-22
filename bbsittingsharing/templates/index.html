@@ -1,15 +1,23 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
+{% if user.is_authenticated %}
+<h2>{% trans "Welcome" %} {{user.first_name}} !</h2>
+
+<div>
+    <h3>{% trans "Your profile" %}</h3>
+</div>
+<div>
+    <h3>{% trans "Your group" %}</h3>
+    {{user.groups.first}}
+</div>
+<div>
+    <h3>{% trans "Your planned babysittings" %}</h3>
+    <a href="{% url 'agenda' %}">{% trans "Agenda" %}</a>
+    <a href="{% url 'new' %}">{% trans "Create a Baby sitting" %}</a>
+</div>
 <h2>{% trans "Should we organize to share a babysitting?" %}</h2>
 
-{% if user.is_authenticated %}
-<ul>
-    <li>{% trans "The concept" %}</li>
-    <li>{% trans "Who are we?" %}</li>
-    <li>{% trans "Keep calm" %}</li>
-</ul>
-{% else %}
 <ul>
     <li><a href="">{% trans "Refer" %}</a></li>
     <li><a href="{% url 'registration_register' %}">{% trans "Register" %}</a></li>
