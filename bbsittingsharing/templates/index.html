@@ -15,6 +15,8 @@
     <h3>{% trans "Your planned babysittings" %}</h3>
     <a href="{% url 'agenda' %}">{% trans "Agenda" %}</a>
     <a href="{% url 'new' %}">{% trans "Create a Baby sitting" %}</a>
+    <input id="searchdate"/>
+    <button onclick="document.location = '/search/'+document.getElementById('searchdate').value">{% trans 'Search' %}</button>
 </div>
 <h2>{% trans "Should we organize to share a babysitting?" %}</h2>
 

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<table>
+{%for bbsitting in bbsitting_list %}
+    <tr>
+        <td><a href="{% url 'profile' bbsitting.author.username %}">{{bbsitting.author}}</td>
+        <td>{{bbsitting.start}}</td>
+        <td>{{bbsitting.bbsitter_found}}</td>
+        <td><a href="{% url 'book' bbsitting.pk %}">{% trans "book" %}</a></td>
+    </tr>
+{% endfor %}
+<table>
+{% endblock %}
