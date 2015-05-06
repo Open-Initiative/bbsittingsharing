@@ -1,1 +1,10 @@
-Thank you!
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div id="pagetitle">
+    <div>{% trans "Thanks for registering." %}</div>
+    <div>{% trans "As the network is based on trust, we are going to check your reference, and we'll send you an e-mail." %}</div>
+    <div>{% trans "Thank you for your interest in BBSitting Sharing by Echos Kids." %}</div>
+    <div>{% trans "See you soon !" %}</div>
+</div>
+{% endblock %}

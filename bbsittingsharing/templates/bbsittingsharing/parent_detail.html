@@ -1,7 +1,46 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block scripts %}
+<script>
+    window.onload = function() {
+        $('#searchdate').datepicker({format: "yyyymmdd",todayHighlight: true})
+    };
+</script>
+{% endblock %}
 
 {% block content %}
-    {% blocktrans %}{{parent}}'s profile{% endblocktrans %}
-    {{parent.first_name}} {{parent.last_name}}
+{% with parent|default:user as profile %}
+<div id="pagetitle">
+    <h2>{% trans "Welcome" %} {{profile.first_name}} !</h2>
+    {% if profile == user %}
+    <a class="btn btn-danger" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
+    <a class="btn btn-danger" href="">{% trans "Refer" %}</a>
+    {% endif %}
+</div>
+
+<div class="col-sm-7 panel panel-margin">
+    <h3>{{profile.first_name}} {{profile.last_name}}</h3>
+    <p>{{profile.phone}}</p>
+    <p>{{profile.kidsnb}}</p>
+    <p>{{profile.groups.first}}</p>
+    <p>{{profile.school}}</p>
+    <p>{{profile.bbsitter}}</p>
+    <a class="btn btn-danger" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
+</div>
+<div class="col-sm-3 panel panel-margin">
+    <a class="btn btn-primary">{% trans "Upload a picture" %}</a>
+</div>
+<div class="col-sm-3 panel panel-margin">
+    <h3>{% trans "My friends" %}</h3>
+    <a class="btn btn-danger">{% trans "See all my friends" %}</a>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-sm-10 panel panel-margin">
+    <h3>{% trans "Your planned babysittings" %}</h3>
+    <input id="searchdate"/>
+    <button class="btn btn-danger" onclick="document.location = '/search/'+document.getElementById('searchdate').value">{% trans 'Search' %}</button>
+    <a class="btn btn-danger" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
+</div>
+{% endwith %}
 {% endblock %}

@@ -18,3 +18,8 @@ class BBSitting(models.Model):
 
 class Parent(AbstractUser):
     phone = models.CharField(max_length=20, blank=True, null=True)
+    kidsnb = models.IntegerField(blank=True, null=True)
+    school = models.CharField(max_length=255, blank=True, null=True)
+    bbsitter = models.CharField(max_length=255, blank=True, null=True)
+    ok_at_home = models.BooleanField(default=True)
+    ok_at_others = models.BooleanField(default=True)

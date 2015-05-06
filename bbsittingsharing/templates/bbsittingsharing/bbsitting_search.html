@@ -10,6 +10,8 @@
         <td>{{bbsitting.bbsitter_found}}</td>
         <td><a href="{% url 'book' bbsitting.pk %}">{% trans "book" %}</a></td>
     </tr>
+{% empty %}
+    {% trans "No bbsitting found near that date." %}
 {% endfor %}
-<table>
+</table>
 {% endblock %}

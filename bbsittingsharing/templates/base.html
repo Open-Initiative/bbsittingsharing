@@ -3,27 +3,44 @@
 <!doctype html>
 <html>
     <head>
+        <title>Baby Sitting sharing</title>
         <link rel='stylesheet' href='{% static "css/fullcalendar.css" %}' />
+        <link rel='stylesheet' href='{% static "css/bootstrap.css" %}' />
+        <link rel='stylesheet' href='{% static "css/bootstrap-theme.css" %}' />
+        <link rel='stylesheet' href='{% static "css/bootstrap-datepicker3.css" %}' />
+        <link rel='stylesheet' href='{% static "css/bbsittingsharing.css" %}' />
         <script src='{% static "js/jquery.min.js" %}'></script>
         <script src='{% static "js/moment.min.js" %}'></script>
+        <script src='{% static "js/bootstrap.js" %}'></script>
+        <script src='{% static "js/bootstrap-datepicker.js" %}'></script>
         <script src='{% static "js/fullcalendar.js" %}'></script>
+        <script src='{% static "js/bbsittingsharing.js" %}'></script>
         {% block scripts %}{% endblock %}
     </head>
     <body>
-        {% trans "Baby Sitting sharing" %}
-        <div>{% trans "by Echos Kids" %}</div>
-        {% if user.is_authenticated %}
-        <a href="{% url 'auth_logout' %}">{% trans "logout" %}</a>
-        {% else %}
-        <a href="{% url 'auth_login' %}">{% trans "login" %}</a>
-        {% endif %}
-        <a href="{% url 'info' %}">{% trans "information" %}</a>
-        {% block content %}{% endblock %}
+        <header>
+            <a href="{% url 'index' %}"><img alt="BbSitting Sharing"/></a>
+            <h1>
+                Baby Sitting sharing
+                <div>by Echos Kids</div>
+            </h1>
+            {% if user.is_authenticated %}
+            <a href="{% url 'auth_logout' %}">{% trans "logout" %}</a>
+            {% endif %}
+        </header>
+        
+        <main class="container">
+            {% block content %}{% endblock %}
+        </main>
+        
         <footer>
-            <nav>
-                <a href="">{% trans "Terms" %}</a>
-                <a href="">{% trans "Legal statement" %}</a>
-                <a href="">{% trans "Contact" %}</a>
+            <nav class="container">
+                <ul>
+                    <li class="col-md-3"><a href="">{% trans "Terms" %}</a></li>
+                    <li class="col-md-3"><a href="">{% trans "Legal statement" %}</a></li>
+                    <li class="col-md-3"><a href="">{% trans "Contact" %}</a></li>
+                    <li class="col-md-3"><a href="{% url 'info' %}">{% trans "Who are we?" %}</a></li>
+                </ul>
             </nav> 
         </footer>
     </body>
