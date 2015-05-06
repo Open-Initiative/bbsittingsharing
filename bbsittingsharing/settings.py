@@ -10,7 +10,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 from settings_specific import *
 
 TEMPLATE_DEBUG = DEBUG
-ALLOWED_HOSTS = []
 
 # Application definition
 
