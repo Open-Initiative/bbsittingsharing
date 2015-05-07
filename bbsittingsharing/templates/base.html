@@ -19,9 +19,8 @@
     </head>
     <body>
         <header>
-            <a href="{% url 'index' %}"><img alt="BbSitting Sharing"/></a>
             <h1>
-                Baby Sitting sharing
+                <a href="{% url 'index' %}">Baby Sitting sharing</a>
                 <div>by Echos Kids</div>
             </h1>
             {% if user.is_authenticated %}
