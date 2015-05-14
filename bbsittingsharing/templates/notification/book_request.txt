@@ -1,0 +1,6 @@
+{% load i18n %}
+{% trans "Hello" %}.
+
+{{from}} {% trans "wants to book the bbsitting on" %} {{booking.bbsitting.date}}.
+{% trans "To validate it, please go to:" %}
+{% url 'validate' pk=booking.bbsitting.pk booking_pk=booking.pk %}

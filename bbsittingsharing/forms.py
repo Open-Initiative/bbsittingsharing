@@ -4,4 +4,4 @@ from bbsittingsharing.models import BBSitting
 class BBSittingForm(ModelForm):
     class Meta:
         model = BBSitting
-        exclude = ['author']
+        exclude = ['author', 'booked']

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load bootstrap %}
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form|bootstrap}}
     <input class="btn btn-danger" type="submit">

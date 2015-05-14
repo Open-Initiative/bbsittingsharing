@@ -3,7 +3,7 @@
 {% load bootstrap %}
 {% block content %}
 <div id="pagetitle">
-    {% trans "An e-mail has been sent to XXX. You will be contacted very soon." %}
+    {% trans "An e-mail has been sent to" %} {{recipient}}. {% trans "You will be contacted very soon." %}
     {% trans "Don't forget, it's always better to meet with the other parents and the baby sitter!" %}
 </div>
 {% endblock %}

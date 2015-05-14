@@ -3,13 +3,13 @@
 {% block scripts %}
 <script>
     $(document).ready(function() {
-        $('#calendar-right').fullCalendar({ 'events': {{bbsitting_list|bbjson}}});
-        $('#calendar-left').fullCalendar({ 'events': {{bbsitting_list|bbjson}}, 'viewRender': syncCalendars});
+        $('#calendar-right').fullCalendar({ 'events': {{bbsitting_list|bbjson}}, height: 350});
+        $('#calendar-left').fullCalendar({ 'events': {{bbsitting_list|bbjson}}, height: 350, 'viewRender': syncCalendars});
     });
 </script>
 {% endblock %}
 {% block content %}
-<div class="col-sm-8 panel panel-center ">
+<div class="col-sm-9 panel panel-center">
     <div id="calendar-left" class="col-sm-6"></div>
     <div id="calendar-right" class="col-sm-6"></div>
     <div class="clearfix"></div>

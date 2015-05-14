@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap %}
+{% block content %}
+<div id="pagetitle">{% trans "booking validation" %}</div>
+<div>
+    {% blocktrans with requester=booking.parent.get_full_name date=booking.bbsitting.date%}
+    Thank you! {{requester}}'s booking has been validated for the bbsitting of the {{date}}
+    {% endblocktrans %}
+</div>
+{% endblock %}
