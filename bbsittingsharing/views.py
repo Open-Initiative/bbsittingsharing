@@ -46,3 +46,16 @@ class ValidateView(generic.TemplateView):
         booking.save()
         notify(booking, request.user, 'book_validated')
         return super(ValidateView, self).get(request, booking=booking)
+
+class FriendsView(generic.ListView):
+    """Shows the list of referers, referees, and members of the same group"""
+    template_name="bbsittingsharing/friends_list.html"
+    context_object_name = 'friends'
+    def get(self, request, *args, **kwargs):
+        self.user = request.user
+        self.queryset = request.user.friends.all()
+        return super(FriendsView, self).get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(FriendsView, self).get_context_data(**kwargs)
+        context['neighbours'] = self.user.groups.first().user_set.all()
+        return context

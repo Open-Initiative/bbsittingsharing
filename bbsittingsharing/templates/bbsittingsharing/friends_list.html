@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <div class="col-md-6">
+        <h3>{% trans "My friends" %}</h3>
+        {% include "bbsittingsharing/friends.html" with users=friends %}
+    </div>
+    <div class="col-md-6">
+        <h3>{% trans "My neighbours" %}</h3>
+        {% include "bbsittingsharing/friends.html" with users=neighbours %}
+    </div>
+{% endblock %}

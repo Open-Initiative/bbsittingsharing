@@ -25,6 +25,7 @@ class Parent(AbstractUser):
     bbsitter    = models.CharField(max_length=255, blank=True, null=True)
     ok_at_home  = models.BooleanField(default=True)
     ok_at_others= models.BooleanField(default=True)
+    friends     = models.ManyToManyField("self", blank=True, null=True)
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""

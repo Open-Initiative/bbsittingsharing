@@ -75,3 +75,7 @@ img.profile {
 #calendar-right .fc-right {
     display: none;
 }
+
+.userthumb {
+    height:  5em;
+}
