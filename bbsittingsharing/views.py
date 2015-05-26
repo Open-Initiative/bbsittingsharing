@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.views import generic
 
@@ -6,7 +7,15 @@ from bbsittingsharing.helpers import notify
 from bbsittingsharing.models import BBSitting, Booking
 from bbsittingsharing.forms import BBSittingForm
 
-class SearchView(generic.ListView):
+class LoginRequiredMixin(object):
+    """Ensures the user is logged in to access the view"""
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view)
+
+
+class SearchView(LoginRequiredMixin, generic.ListView):
     """Searches all baby sittings close to a date"""
     model = BBSitting
     template_name = "bbsittingsharing/bbsitting_search.html"
@@ -16,7 +25,7 @@ class SearchView(generic.ListView):
         delta = timedelta(days=3)
         return BBSitting.objects.filter(date__range=[date-delta, date+delta])
 
-class CreateView(generic.CreateView):
+class CreateView(LoginRequiredMixin, generic.CreateView):
     """BBSitting creation view, saving the author"""
     model = BBSitting
     form_class = BBSittingForm
@@ -25,7 +34,7 @@ class CreateView(generic.CreateView):
         form.instance.author = self.request.user
         return super(CreateView, self).form_valid(form)
 
-class BookView(generic.TemplateView):
+class BookView(LoginRequiredMixin, generic.TemplateView):
     """Creates a booking for the bbsitting and the user"""
     template_name="bbsittingsharing/book_confirm.html"
     def get(self, request, pk):
@@ -34,7 +43,7 @@ class BookView(generic.TemplateView):
         notify(booking, request.user, 'book_request')
         return super(BookView, self).get(request, recipient=bbsitting.author.get_full_name())
 
-class ValidateView(generic.TemplateView):
+class ValidateView(LoginRequiredMixin, generic.TemplateView):
     """Validates the booking"""
     template_name="bbsittingsharing/book_validate.html"
     def get(self, request, pk, booking_pk):
@@ -47,7 +56,7 @@ class ValidateView(generic.TemplateView):
         notify(booking, request.user, 'book_validated')
         return super(ValidateView, self).get(request, booking=booking)
 
-class FriendsView(generic.ListView):
+class FriendsView(LoginRequiredMixin, generic.ListView):
     """Shows the list of referers, referees, and members of the same group"""
     template_name="bbsittingsharing/friends_list.html"
     context_object_name = 'friends'
