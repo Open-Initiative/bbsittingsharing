@@ -26,12 +26,15 @@ class Parent(AbstractUser):
     ok_at_home  = models.BooleanField(default=True)
     ok_at_others= models.BooleanField(default=True)
     friends     = models.ManyToManyField("self", blank=True, null=True)
+    referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True)
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""
         return '%s%s'%(self.username, splitext(filename)[1])
     picture     = models.ImageField(upload_to=picture_name, default="/static/user.jpg")
     
+    def get_full_name(self):
+        return super(Parent, self).get_full_name() or self.username
     def __unicode__(self):
         return "%s's profile"%(self.get_full_name())
 

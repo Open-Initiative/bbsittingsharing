@@ -1,0 +1,6 @@
+{% load i18n %}
+{% trans "Hello" %}.
+
+{% blocktrans %}You have been invited by {{referer}} to join BBSitting Sharing.
+Please go to: {% endblocktrans %}
+{% url 'registration_register' %}?referer={{referer.username}}

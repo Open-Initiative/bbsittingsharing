@@ -1,11 +1,15 @@
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.http import Http404
+from django.shortcuts import redirect
+from django.template import Context
 from django.views import generic
+from registration.backends.default.views import RegistrationView
 
-from bbsittingsharing.helpers import notify
-from bbsittingsharing.models import BBSitting, Booking
-from bbsittingsharing.forms import BBSittingForm
+from helpers import notify, send_email
+from models import BBSitting, Booking, Parent
+from forms import BBSittingForm, ReferForm, ParentForm
 
 class LoginRequiredMixin(object):
     """Ensures the user is logged in to access the view"""
@@ -14,6 +18,17 @@ class LoginRequiredMixin(object):
         view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
         return login_required(view)
 
+
+class RegisterView(RegistrationView):
+    """Override of the default backend to take the referer into account"""
+    form_class = ParentForm
+    def get_initial(self):
+        return {'referer': self.request.GET.get('referer')}
+    def form_valid(self, request, form):
+        """Adds the referer as a friend"""
+        new_user = self.register(request, form)
+        new_user.friends.add(form.cleaned_data.get('referer'))
+        return redirect(self.get_success_url())
 
 class SearchView(LoginRequiredMixin, generic.ListView):
     """Searches all baby sittings close to a date"""
@@ -61,10 +76,23 @@ class FriendsView(LoginRequiredMixin, generic.ListView):
     template_name="bbsittingsharing/friends_list.html"
     context_object_name = 'friends'
     def get(self, request, *args, **kwargs):
-        self.user = request.user
         self.queryset = request.user.friends.all()
         return super(FriendsView, self).get(request, *args, **kwargs)
     def get_context_data(self, **kwargs):
         context = super(FriendsView, self).get_context_data(**kwargs)
-        context['neighbours'] = self.user.groups.first().user_set.all()
+        if self.request.user.groups.first():
+            context['neighbours'] = self.request.user.groups.first().user_set.all()
         return context
+
+class ReferView(LoginRequiredMixin, generic.edit.FormView):
+    """Shows the list of referees, and members of the same group"""
+    template_name="bbsittingsharing/refer.html"
+    form_class = ReferForm
+    def get_context_data(self, **kwargs):
+        context = super(ReferView, self).get_context_data(**kwargs)
+        context['referees'] = self.request.user.referees.all()
+        return context
+    def form_valid(self, form):
+        context = Context({'referer': self.request.user})
+        send_email([form.cleaned_data['referee']], 'hello', 'refer_request', context)
+        return self.render_to_response(self.get_context_data(form=form))

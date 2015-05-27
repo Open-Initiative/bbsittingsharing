@@ -52,6 +52,7 @@ MEDIA_URL = '/pics/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
+INCLUDE_REGISTER_URL = False
 AUTH_USER_MODEL = 'bbsittingsharing.Parent'
 
 # Static files (CSS, JavaScript, Images)

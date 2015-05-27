@@ -14,7 +14,7 @@
     <h2>{% trans "Welcome" %} {{profile.first_name}} !</h2>
     {% if profile == user %}
     <a class="btn btn-danger" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
-    <a class="btn btn-danger" href="">{% trans "Refer" %}</a>
+    <a class="btn btn-danger" href="{% url 'refer' %}">{% trans "Refer" %}</a>
     {% endif %}
 </div>
 
