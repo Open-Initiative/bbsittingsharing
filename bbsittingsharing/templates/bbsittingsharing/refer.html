@@ -4,6 +4,11 @@
 {% block content %}
     <h3>{% trans "My referees" %}</h3>
     {% include "bbsittingsharing/friends.html" with users=referees %}
+    
+    {% if recipient %}
+    {% trans "An invitation has been sent to" %} {{recipient}}. {% trans "Thank you!" %}
+    {% endif %}
+    
     <form method="POST">
         {% csrf_token %}
         {{form}}

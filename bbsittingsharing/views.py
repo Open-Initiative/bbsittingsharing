@@ -93,6 +93,7 @@ class ReferView(LoginRequiredMixin, generic.edit.FormView):
         context['referees'] = self.request.user.referees.all()
         return context
     def form_valid(self, form):
-        context = Context({'referer': self.request.user})
-        send_email([form.cleaned_data['referee']], 'hello', 'refer_request', context)
-        return self.render_to_response(self.get_context_data(form=form))
+        email_context = Context({'referer': self.request.user})
+        recipient = form.cleaned_data['referee']
+        send_email([recipient], 'hello', 'refer_request', email_context)
+        return self.render_to_response(self.get_context_data(form=form, recipient=recipient))
