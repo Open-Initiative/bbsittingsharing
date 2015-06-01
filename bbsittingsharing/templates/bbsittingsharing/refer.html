@@ -8,7 +8,7 @@
     {% if recipient %}
     {% trans "An invitation has been sent to" %} {{recipient}}. {% trans "Thank you!" %}
     {% endif %}
-    
+
     <form method="POST">
         {% csrf_token %}
         {{form}}

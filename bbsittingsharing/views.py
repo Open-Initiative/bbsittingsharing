@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import redirect
-from django.template import Context
+from django.template import RequestContext
 from django.views import generic
 from registration.backends.default.views import RegistrationView
 
@@ -55,7 +55,7 @@ class BookView(LoginRequiredMixin, generic.TemplateView):
     def get(self, request, pk):
         bbsitting = BBSitting.objects.get(pk=pk)
         booking = Booking.objects.create(bbsitting=bbsitting, parent=request.user)
-        notify(booking, request.user, 'book_request')
+        notify(request, booking, 'book_request')
         return super(BookView, self).get(request, recipient=bbsitting.author.get_full_name())
 
 class ValidateView(LoginRequiredMixin, generic.TemplateView):
@@ -68,7 +68,7 @@ class ValidateView(LoginRequiredMixin, generic.TemplateView):
             raise Http404
         booking.validated = True
         booking.save()
-        notify(booking, request.user, 'book_validated')
+        notify(request, booking, 'book_validated')
         return super(ValidateView, self).get(request, booking=booking)
 
 class FriendsView(LoginRequiredMixin, generic.ListView):
@@ -93,7 +93,7 @@ class ReferView(LoginRequiredMixin, generic.edit.FormView):
         context['referees'] = self.request.user.referees.all()
         return context
     def form_valid(self, form):
-        email_context = Context({'referer': self.request.user})
+        email_context = RequestContext(self.request, {'referer': self.request.user})
         recipient = form.cleaned_data['referee']
         send_email([recipient], 'hello', 'refer_request', email_context)
         return self.render_to_response(self.get_context_data(form=form, recipient=recipient))
