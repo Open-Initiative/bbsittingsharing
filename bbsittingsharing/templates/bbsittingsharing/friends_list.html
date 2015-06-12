@@ -2,14 +2,31 @@
 {% load i18n %}
 
 {% block content %}
+<div id="pagetitle">
+    <h3>{% trans "My friends" %}</h3>
+</div>
+<a class="btn panelbtn friends-btn" href="{% url 'refer' %}">{% trans "Refer" %}</a>
+
 <div class="panel">
     <div class="col-md-6">
-        <h3>{% trans "My friends" %}</h3>
-        {% include "bbsittingsharing/friends.html" with users=friends %}
+        <h4 class="friends-title">{% trans "My friends" %}</h4>
     </div>
     <div class="col-md-6">
-        <h3>{% trans "My neighbours" %}</h3>
+        <h4 class="friends-title">{% trans "My neighbours" %}</h4>
+    </div>
+    <div class="col-md-3 friends-col">
+        <h5 class="friends-title">{% trans "Facebook"%}</h5>
+        {% include "bbsittingsharing/friends.html" with users=friends %}
+    </div>
+    <div class="col-md-3 friends-col">
+        <h5 class="friends-title">{% trans "Referees"%}</h5>
+    </div>
+    <div class="col-md-3 friends-col">
+        <h5 class="friends-title">{% trans "School"%}</h5>
         {% include "bbsittingsharing/friends.html" with users=neighbours %}
+    </div>
+    <div class="col-md-3 friends-col">
+        <h5 class="friends-title">{% trans "District"%}</h5>
     </div>
     <div class="clearfix"></div>
 </div>

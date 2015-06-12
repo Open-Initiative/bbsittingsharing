@@ -32,9 +32,13 @@ header h1 {
 }
 header h1 a {
     color: #183c77;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .8em;
+    letter-spacing: 5px;
 }
 #pagetitle {
-    width: 50%;
+    width: 100%;
     margin: 1em auto;
     padding: 1.2em;
     background: #67acf2;
@@ -111,7 +115,17 @@ footer a {
     margin-right: auto;
 }
 
-.friendsbtn {
+.friends-title {
+    text-align: center;
+}
+.friends-col {
+    margin-top: 1em;
+    border: solid #f2f0ed;
+}
+.friends-btn {
+    margin: 1em;
+}
+.profile-friends-btn {
     width: 100%;
     margin: .4em;
 }

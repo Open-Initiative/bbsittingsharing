@@ -11,7 +11,7 @@
 {% block content %}
 {% with parent|default:user as profile %}
 <div id="pagetitle">
-    <h2>{% trans "Welcome" %} {{profile.first_name}} !</h2>
+    <h4>{% trans "Welcome" %} {{profile.first_name}} !</h4>
     {% if profile == user %}
     <a class="btn" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
     <a class="btn" href="{% url 'refer' %}">{% trans "Refer" %}</a>
@@ -19,8 +19,7 @@
 </div>
 
 <div class="col-sm-7 panel panel-margin">
-    <h3>{{profile.first_name}} {{profile.last_name}}</h3>
-    <p>{{profile.phone}}</p>
+    <p>{{profile.phone|default:_("No phone number provided")}}</p>
     <p><span class="number">{{profile.kidsnb|default:0}}</span> {% trans "kids" %}</p>
     <p>{% trans "District:" %} {{profile.groups.first}}</p>
     <p>{% trans "School:" %} {{profile.school}}</p>
@@ -41,8 +40,8 @@
         {{user.get_full_name}}
     </a>
     {% endfor %}
-    <a class="btn panelbtn friendsbtn" href="{% url 'friends' %}">{% trans "See my friends" %}</a>
-    <a class="btn panelbtn friendsbtn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
+    <a class="btn panelbtn profile-friends-btn" href="{% url 'friends' %}">{% trans "See my friends" %}</a>
+    <a class="btn panelbtn profile-friends-friendsbtn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
 </div>
 <div class="clearfix"></div>
 
