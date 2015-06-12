@@ -2,6 +2,7 @@ from os.path import splitext
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 from bbsittingsharing import settings
 
 class BBSitting(models.Model):
@@ -16,15 +17,15 @@ class BBSitting(models.Model):
        return reverse('detail', args=[str(self.id)])
        
    def __unicode__(self):
-      return "At %s's on %s"%(self.author, self.date)
+      return _("At %(author)s's on %(date)s")%{'author':self.author.get_full_name(), 'date':self.date}
 
 class Parent(AbstractUser):
-    phone       = models.CharField(max_length=20, blank=True, null=True)
-    kidsnb      = models.IntegerField(blank=True, null=True)
-    school      = models.CharField(max_length=255, blank=True, null=True)
-    bbsitter    = models.CharField(max_length=255, blank=True, null=True)
-    ok_at_home  = models.BooleanField(default=True)
-    ok_at_others= models.BooleanField(default=True)
+    phone       = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Phone number"))
+    kidsnb      = models.IntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
+    school      = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("School name"))
+    bbsitter    = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Usual bbsitter"))
+    ok_at_home  = models.BooleanField(default=True, verbose_name="Ok "+_("to host a bbsitting"))
+    ok_at_others= models.BooleanField(default=True, verbose_name="Ok "+_("to go to someone else's place"))
     friends     = models.ManyToManyField("self", blank=True, null=True)
     referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True)
     
@@ -36,7 +37,7 @@ class Parent(AbstractUser):
     def get_full_name(self):
         return super(Parent, self).get_full_name() or self.username
     def __unicode__(self):
-        return "%s's profile"%(self.get_full_name())
+        return _("%(name)s's profile"%{'name':self.get_full_name()})
 
 class Booking(models.Model):
     parent = models.ForeignKey(Parent)
@@ -45,4 +46,4 @@ class Booking(models.Model):
     class Meta:
        unique_together = ("parent", "bbsitting")
     def __unicode__(self):
-        return "%s's booking for %s"%(self.parent, self.bbsitter)
+        return _("%(parent)s's booking for %(bbsitting)s"%{'parent':self.parent, 'bbsitting':self.bbsitting})

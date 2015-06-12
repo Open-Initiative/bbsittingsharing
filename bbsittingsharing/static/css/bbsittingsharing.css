@@ -1,8 +1,9 @@
 /*
 le bleu ciel:   #67acf2
-le rouge:       #fc5151
-le gris clair:  #f2f0ed
 le bleu foncé:  #183c77
+le rouge:       #fc5151
+le rouge foncé: #cc3636
+le gris clair:  #f2f0ed
 */
 @font-face {
     font-family: "Gotham";
@@ -20,6 +21,7 @@ body {
 header {
     height: 140px;
     padding: 2em;
+    margin-bottom: 2em;
     background: white;
 }
 header h1 {
@@ -33,7 +35,7 @@ header h1 a {
 }
 #pagetitle {
     width: 50%;
-    margin: 100px auto;
+    margin: 1em auto;
     padding: 1.2em;
     background: #67acf2;
     border-radius: 15px;
@@ -44,6 +46,15 @@ header h1 a {
 }
 #pagetitle .btn {
     background: white;
+    margin: .5em;
+    width: 8em;
+}
+#pagetitle nav {
+   width: 100%;
+}
+#pagetitle ul {
+   list-style-type: none;
+   padding: 0;
 }
 main form {
     width: 50%;
@@ -77,8 +88,9 @@ footer a {
 .panel h3 {
     text-align: center;
 }
-.panel .btn {
+.panelbtn {
     background: #fc5151;
+    border-bottom: solid #cc3636;
     color: white;
 }
 .panel p {
@@ -99,11 +111,31 @@ footer a {
     margin-right: auto;
 }
 
+.friendsbtn {
+    width: 100%;
+    margin: .4em;
+}
+.calendarbtn {
+    background: #fc5151;
+    border-bottom: solid #cc3636;
+    margin: 1em auto;
+    color: white;
+    text-align: center;
+}
+
 img.profile {
     max-width: 90%;
 }
 #calendar-right .fc-right {
     display: none;
+}
+.profile-edit-help {
+    width: 50%;
+    margin: 1em auto;
+    padding: 1em;
+    text-align: center;
+    font-size: .8em;
+    font-style: oblique;
 }
 
 .userthumb {

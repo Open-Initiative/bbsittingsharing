@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
-from django.http import Http404
+from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import redirect
 from django.template import RequestContext
 from django.views import generic
@@ -54,6 +54,8 @@ class BookView(LoginRequiredMixin, generic.TemplateView):
     template_name="bbsittingsharing/book_confirm.html"
     def get(self, request, pk):
         bbsitting = BBSitting.objects.get(pk=pk)
+        if bbsitting.author==request.user:
+            HttpResponseForbidden
         booking = Booking.objects.create(bbsitting=bbsitting, parent=request.user)
         notify(request, booking, 'book_request')
         return super(BookView, self).get(request, recipient=bbsitting.author.get_full_name())

@@ -2,9 +2,15 @@
 {% load i18n %}
 {% load bootstrap %}
 {% block content %}
+<div id="pagetitle">
+    {% trans "Edit my profile" %}
+</div>
+<div class="profile-edit-help">
+    {% trans "You can add details in your profile to better describe your needs of bbsitting sharing. No data is mandatory." %}
+</div>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form|bootstrap}}
-    <input class="btn btn-danger" type="submit">
+    <input class="btn panelbtn" type="submit">
 </form>
 {% endblock %}

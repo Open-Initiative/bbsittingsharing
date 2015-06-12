@@ -2,14 +2,16 @@
 {% load i18n %}
 {% load bootstrap %}
 {% block content %}
-<div>{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</div>
-<div>{% trans "On" %} {{bbsitting.date}}</div>
-<div>{% trans "From" %} {{bbsitting.start}}</div>
+<div class="panel">
+    <div>{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</div>
+    <div>{% trans "On" %} {{bbsitting.date}}</div>
+    <div>{% trans "From" %} {{bbsitting.start}}</div>
 
-<div>
-    {{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}
-    {% if bbsitting.booked.count < bbsitting.children_capacity %}
-    - <a href="{% url 'book' bbsitting.pk %}">{% trans "book" %}</a>
-    {% endif %}
+    <div>
+        {{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}
+        {% if bbsitting.booked.count < bbsitting.children_capacity and bbsitting.author != user %}
+        - <a class="btn" href="{% url 'book' bbsitting.pk %}">{% trans "book" %}</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

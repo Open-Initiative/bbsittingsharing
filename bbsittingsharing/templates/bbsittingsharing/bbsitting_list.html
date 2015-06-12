@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load bbsitting_tags %}
 {% block scripts %}
 <script>
@@ -9,6 +10,10 @@
 </script>
 {% endblock %}
 {% block content %}
+<div id="pagetitle">
+    {% trans "Calendar" %}
+</div>
+<a class="btn panelbtn calendarbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
 <div class="col-sm-9 panel panel-center">
     <div id="calendar-left" class="col-sm-6"></div>
     <div id="calendar-right" class="col-sm-6"></div>

@@ -25,27 +25,36 @@
     <p>{% trans "District:" %} {{profile.groups.first}}</p>
     <p>{% trans "School:" %} {{profile.school}}</p>
     <p>{% trans "Usual bbsitter:" %} {{profile.bbsitter}}</p>
+    <p><span class="number">{% if profile.ok_at_home %}OK{% else %}NOK{% endif %}</span> {% trans "to host a bbsitting" %}</p>
+    <p><span class="number">{% if profile.ok_at_others %}OK{% else %}NOK{% endif %}</span> {% trans "to go to someone else's place" %}</p>
     <p><span class="number">{{profile.bbsitting_set.count}}</span> {% trans "bbsitting already shared" %}</p>
-    <a class="btn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
+    <a class="btn panelbtn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
 </div>
 <div class="col-sm-3 panel panel-margin">
     <img class="profile" alt="{% blocktrans with name=profile.username%}{{username}}'s picture{% endblocktrans %} '" src="{{profile.picture.url}}" />
 </div>
 <div class="col-sm-3 panel panel-margin">
-    <h3>{% trans "My friends" %}</h3>
-    <a class="btn" href="{% url 'friends' %}">{% trans "See all my friends" %}</a>
+    <h3>{% trans "My group" %}</h3>
+    {% for user in user.friends.all|slice:":4" %}
+    <a href="{% url 'profile' user.username %}">
+        <img class="userthumb" src="{{user.picture.url}}" alt="{% blocktrans %}{{user}}'s picture{% endblocktrans %}" />
+        {{user.get_full_name}}
+    </a>
+    {% endfor %}
+    <a class="btn panelbtn friendsbtn" href="{% url 'friends' %}">{% trans "See my friends" %}</a>
+    <a class="btn panelbtn friendsbtn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
 </div>
 <div class="clearfix"></div>
 
 <div class="col-sm-10 panel panel-margin">
     <h3>{% trans "Your planned babysittings" %}</h3>
     {% for bbsitting in profile.bbsitting_set.all %}
-        <p>{{bbsitting}}</p>
+        <p><a href="{% url 'detail' bbsitting.pk %}">{{bbsitting}}</a></p>
     {% endfor %}
     {% comment %}<input id="searchdate"/>
-    <button class="btn" onclick="document.location = '/search/'+document.getElementById('searchdate').value">{% trans 'Search' %}</button>{% endcomment %}
-    <a class="btn" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
-    <a class="btn" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
+    <button class="btn panelbtn" onclick="document.location = '/search/'+document.getElementById('searchdate').value">{% trans 'Search' %}</button>{% endcomment %}
+    <a class="btn panelbtn" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
+    <a class="btn panelbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
 </div>
 {% endwith %}
 {% endblock %}
