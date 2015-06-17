@@ -14,15 +14,15 @@ TEMPLATE_DEBUG = DEBUG
 # Application definition
 
 INSTALLED_APPS = (
+    'bbsittingsharing',
+    'bootstrapform',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration',
-    'bootstrapform',
-    'bbsittingsharing'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (

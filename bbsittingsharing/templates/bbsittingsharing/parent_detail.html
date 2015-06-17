@@ -10,15 +10,16 @@
 
 {% block content %}
 {% with parent|default:user as profile %}
+{% if profile == user %}
 <div id="pagetitle">
-    <h4>{% trans "Welcome" %} {{profile.first_name}} !</h4>
-    {% if profile == user %}
+    <h4>{% trans "Welcome" %} {{user.first_name}} !</h4>
     <a class="btn" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
     <a class="btn" href="{% url 'refer' %}">{% trans "Refer" %}</a>
-    {% endif %}
 </div>
+{% endif %}
 
 <div class="col-sm-7 panel panel-margin">
+    <h3>{{profile.get_full_name}}</h3>
     <p>{{profile.phone|default:_("No phone number provided")}}</p>
     <p><span class="number">{{profile.kidsnb|default:0}}</span> {% trans "kids" %}</p>
     <p>{% trans "District:" %} {{profile.groups.first}}</p>
@@ -26,6 +27,10 @@
     <p>{% trans "Usual bbsitter:" %} {{profile.bbsitter}}</p>
     <p><span class="number">{% if profile.ok_at_home %}OK{% else %}NOK{% endif %}</span> {% trans "to host a bbsitting" %}</p>
     <p><span class="number">{% if profile.ok_at_others %}OK{% else %}NOK{% endif %}</span> {% trans "to go to someone else's place" %}</p>
+    <p>{% trans "Available equipment" %}</p>
+    <ul>{% for equipment in profile.equipment.all %}
+        <li>{{equipment.name}}</li>
+    {% endfor %}</ul>
     <p><span class="number">{{profile.bbsitting_set.count}}</span> {% trans "bbsitting already shared" %}</p>
     <a class="btn panelbtn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
 </div>
@@ -41,12 +46,12 @@
     </a>
     {% endfor %}
     <a class="btn panelbtn profile-friends-btn" href="{% url 'friends' %}">{% trans "See my friends" %}</a>
-    <a class="btn panelbtn profile-friends-friendsbtn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
+    <a class="btn panelbtn profile-friends-btn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
 </div>
 <div class="clearfix"></div>
 
 <div class="col-sm-10 panel panel-margin">
-    <h3>{% trans "Your planned babysittings" %}</h3>
+    <h3><span class="glyphicon glyphicon-calendar"></span> {% trans "Your planned babysittings" %}</h3>
     {% for bbsitting in profile.bbsitting_set.all %}
         <p><a href="{% url 'detail' bbsitting.pk %}">{{bbsitting}}</a></p>
     {% endfor %}

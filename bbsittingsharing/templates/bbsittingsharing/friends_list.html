@@ -22,11 +22,12 @@
         <h5 class="friends-title">{% trans "Referees"%}</h5>
     </div>
     <div class="col-md-3 friends-col">
-        <h5 class="friends-title">{% trans "School"%}</h5>
-        {% include "bbsittingsharing/friends.html" with users=neighbours %}
+        <h5 class="friends-title">{% trans "District"%}</h5>
+        {% include "bbsittingsharing/friends.html" with users=user.district.users.all %}
     </div>
     <div class="col-md-3 friends-col">
-        <h5 class="friends-title">{% trans "District"%}</h5>
+        <h5 class="friends-title">{% trans "Arrondissement"%}</h5>
+        {% include "bbsittingsharing/friends.html" with users=user.groups.first.user_set.all %}
     </div>
     <div class="clearfix"></div>
 </div>

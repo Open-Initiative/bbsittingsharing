@@ -3,12 +3,11 @@ from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from models import BBSitting, Parent
+from forms import UpdateProfileForm
 from views import *
 
 from django.contrib import admin
 admin.autodiscover()
-
-parentFields = ['first_name', 'last_name', 'email', 'phone', 'kidsnb', 'school', 'bbsitter', 'ok_at_home', 'ok_at_others', 'picture']
 
 urlpatterns = patterns('',
     url(r'^$', generic.TemplateView.as_view(template_name="index.html"), name="index"),
@@ -22,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^friends$', FriendsView.as_view(), name="friends"),
     url(r'^refer$', ReferView.as_view(), name="refer"),
     url(r'^users/(?P<slug>\w+)/$', login_required(generic.DetailView.as_view(model=Parent, slug_field='username')), name="profile"),
-    url(r'^users/(?P<slug>\w+)/edit$', login_required(generic.UpdateView.as_view(model=Parent, slug_field='username', fields=parentFields)), name="profile_edit"),
+    url(r'^users/(?P<slug>\w+)/edit$', login_required(generic.UpdateView.as_view(model=Parent, slug_field='username', form_class=UpdateProfileForm)), name="profile_edit"),
     url(r'^register/$', RegisterView.as_view(), name='registration_register'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', include(admin.site.urls)),

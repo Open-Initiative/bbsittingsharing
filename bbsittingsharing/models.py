@@ -19,6 +19,19 @@ class BBSitting(models.Model):
    def __unicode__(self):
       return _("At %(author)s's on %(date)s")%{'author':self.author.get_full_name(), 'date':self.date}
 
+
+class Equipment(models.Model):
+    name = models.CharField(max_length=255)
+    default = models.BooleanField()
+    def __unicode__(self):
+        return self.name
+
+class District(models.Model):
+    name = models.CharField(max_length=255)
+    group = models.ForeignKey(Group)
+    def __unicode__(self):
+        return self.name
+
 class Parent(AbstractUser):
     phone       = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Phone number"))
     kidsnb      = models.IntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
@@ -28,6 +41,8 @@ class Parent(AbstractUser):
     ok_at_others= models.BooleanField(default=True, verbose_name="Ok "+_("to go to someone else's place"))
     friends     = models.ManyToManyField("self", blank=True, null=True)
     referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True)
+    district    = models.ForeignKey(District, related_name="users", null=True)
+    equipment   = models.ManyToManyField(Equipment)
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""

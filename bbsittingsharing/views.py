@@ -27,7 +27,8 @@ class RegisterView(RegistrationView):
     def form_valid(self, request, form):
         """Adds the referer as a friend"""
         new_user = self.register(request, form)
-        new_user.friends.add(form.cleaned_data.get('referer'))
+        if form.cleaned_data.get('referer'):
+            new_user.friends.add(form.cleaned_data['referer'])
         return redirect(self.get_success_url())
 
 class SearchView(LoginRequiredMixin, generic.ListView):
@@ -80,11 +81,6 @@ class FriendsView(LoginRequiredMixin, generic.ListView):
     def get(self, request, *args, **kwargs):
         self.queryset = request.user.friends.all()
         return super(FriendsView, self).get(request, *args, **kwargs)
-    def get_context_data(self, **kwargs):
-        context = super(FriendsView, self).get_context_data(**kwargs)
-        if self.request.user.groups.first():
-            context['neighbours'] = self.request.user.groups.first().user_set.all()
-        return context
 
 class ReferView(LoginRequiredMixin, generic.edit.FormView):
     """Shows the list of referees, and members of the same group"""

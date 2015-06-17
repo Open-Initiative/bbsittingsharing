@@ -1,7 +1,9 @@
 {% load i18n %}
 {% for user in users %}
-<a href="{% url 'profile' user.username %}">
-    <img class="userthumb" src="{{user.picture.url}}" alt="{% blocktrans %}{{user}}'s picture{% endblocktrans %}" />
-    {{user.get_full_name}}
-</a>
+<div>
+    <a href="{% url 'profile' user.username %}">
+        <img class="userthumb" src="{{user.picture.url}}" alt="{% blocktrans %}{{user}}'s picture{% endblocktrans %}" />
+        {{user.get_full_name}}
+    </a>
+</div>
 {% endfor %}

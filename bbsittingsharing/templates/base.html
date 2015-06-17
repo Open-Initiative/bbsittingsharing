@@ -20,13 +20,19 @@
     </head>
     <body>
         <header>
+            {% if user.is_authenticated %}
+            <nav>
+                <ul>
+                    <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
+                    <li><a href="{% url 'index' %}">{% trans "My account" %}</a></li>
+                    <li><a href="{% url 'refer' %}">{% trans "Refer" %}</a></li>
+                </ul>
+            </nav>
+            {% endif %}
             <h1>
                 <a href="{% url 'index' %}">Bbsitting sharing</a>
                 <div>by Echos Kids</div>
             </h1>
-            {% if user.is_authenticated %}
-            <a href="{% url 'auth_logout' %}">{% trans "logout" %}</a>
-            {% endif %}
         </header>
         
         <main class="container">
