@@ -1,4 +1,4 @@
 *.pyc
-*.po
+*.mo
 settings_specific.py
 db.sqlite3

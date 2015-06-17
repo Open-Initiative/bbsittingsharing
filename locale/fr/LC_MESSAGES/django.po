@@ -1,0 +1,374 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-06-12 15:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: bbsittingsharing/forms.py:11
+msgid "I have read and agree to the Terms of Service"
+msgstr "J'ai lu et j'accepte les conditions d'utilisation"
+
+#: bbsittingsharing/forms.py:12
+msgid "You must agree to the terms to register"
+msgstr "Vous devez accepter les conditions d'utilisation"
+
+#: bbsittingsharing/forms.py:23
+#, python-format
+msgid "User \"%s\" does not exist."
+msgstr "L'utilisateur \"%s\" n'existe pas."
+
+#: bbsittingsharing/forms.py:29
+msgid ""
+"This email address is already in use. Please supply a different email "
+"address."
+msgstr ""
+"Cette adresse e-mail est déjà utilisée. Merci d'utiliser une adresse "
+"différente."
+
+#: bbsittingsharing/models.py:20
+#, python-format
+msgid "At %(author)s's on %(date)s"
+msgstr "Chez %(author)s le %(date)s"
+
+#: bbsittingsharing/models.py:23
+msgid "Phone number"
+msgstr "Numéro de téléphone"
+
+#: bbsittingsharing/models.py:24
+msgid "Number of kids"
+msgstr "Nombre d'enfants"
+
+#: bbsittingsharing/models.py:25
+msgid "School name"
+msgstr "Nom de l'école :"
+
+#: bbsittingsharing/models.py:26
+msgid "Usual bbsitter"
+msgstr "Nom dub bsitter habituel"
+
+#: bbsittingsharing/models.py:27
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:27
+msgid "to host a bbsitting"
+msgstr "pour recevoir chez moi"
+
+#: bbsittingsharing/models.py:28
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:28
+msgid "to go to someone else's place"
+msgstr "pour me déplacer"
+
+#: bbsittingsharing/models.py:40
+msgid "%(name)s's profile"
+msgstr "profil de %(name)s"
+
+#: bbsittingsharing/models.py:49
+#, python-format
+msgid "%(parent)s's booking for %(bbsitting)s"
+msgstr "réservation de %(parent)s pour %(bbsitting)s"
+
+#: bbsittingsharing/templates/base.html:28
+msgid "logout"
+msgstr "se déconnecter"
+
+#: bbsittingsharing/templates/base.html:39
+msgid "Terms"
+msgstr "CGU"
+
+#: bbsittingsharing/templates/base.html:40
+msgid "Legal statement"
+msgstr "Informations légales"
+
+#: bbsittingsharing/templates/base.html:41
+msgid "Contact"
+msgstr "Contact"
+
+#: bbsittingsharing/templates/base.html:42
+#: bbsittingsharing/templates/info.html:17
+msgid "Who are we?"
+msgstr "Qui sommes-nous ?"
+
+#: bbsittingsharing/templates/info.html:7
+msgid "Should we organize to share a babysitting?"
+msgstr "On s'organise pour partager un babysitting ?"
+
+#: bbsittingsharing/templates/info.html:10
+#: bbsittingsharing/templates/registration/registration_form.html:5
+msgid "Register"
+msgstr "S'inscrire"
+
+#: bbsittingsharing/templates/info.html:11
+#: bbsittingsharing/templates/registration/login.html:5
+msgid "Login"
+msgstr "Se connecter"
+
+#: bbsittingsharing/templates/info.html:23
+msgid "Keep cool"
+msgstr "Soyez serein"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_detail.html:6
+#, python-format
+msgid "At %(name)s's"
+msgstr "Chez %(name)s"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_detail.html:7
+msgid "On"
+msgstr "Le"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_detail.html:8
+msgid "From"
+msgstr "À partir de"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_detail.html:11
+msgid "spots booked out of"
+msgstr "places réservées sur"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_detail.html:13
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_search.html:11
+msgid "book"
+msgstr "Réserver"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_form.html:16
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:16
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:57
+msgid "Propose a date"
+msgstr "Proposer une date"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:14
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:16
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:56
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: bbsittingsharing/templates/bbsittingsharing/bbsitting_search.html:14
+msgid "No bbsitting found near that date."
+msgstr "Aucun babysitting trouvé près de cette date."
+
+#: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:6
+msgid "An e-mail has been sent to"
+msgstr "Un e-mail a été envoyé à"
+
+#: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:6
+msgid "You will be contacted very soon."
+msgstr "Vous serez contacté très bientôt."
+
+#: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:7
+msgid ""
+"Don't forget, it's always better to meet with the other parents and the baby "
+"sitter!"
+msgstr ""
+"N'oubliez pas, c'est toujours mieux de rencontrer les autres parents et la "
+"babysitter !"
+
+#: bbsittingsharing/templates/bbsittingsharing/book_validate.html:5
+msgid "booking validation"
+msgstr "validation de la réservation"
+
+#: bbsittingsharing/templates/bbsittingsharing/book_validate.html:7
+#, python-format
+msgid ""
+"\n"
+"    Thank you! %(requester)s's booking has been validated for the bbsitting "
+"of the %(date)s\n"
+"    "
+msgstr ""
+"\n"
+"    Merci ! La réservation de %(requester)s a été validée pour le bbsitting "
+"du %(date)s\n"
+"    "
+
+#: bbsittingsharing/templates/bbsittingsharing/friends.html:4
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:39
+#, python-format
+msgid "%(user)s's picture"
+msgstr "photo de %(user)s"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:6
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:12
+msgid "My friends"
+msgstr "Mes amis"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:8
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:17
+msgid "Refer"
+msgstr "Parrainer"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:15
+msgid "My neighbours"
+msgstr "Mes voisins"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:18
+msgid "Facebook"
+msgstr "Facebook"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:22
+msgid "Referees"
+msgstr "Parrainage"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:25
+msgid "School"
+msgstr "École"
+
+#: bbsittingsharing/templates/bbsittingsharing/friends_list.html:29
+msgid "District"
+msgstr "Quartier"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:14
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:22
+msgid "No phone number provided"
+msgstr "Aucun numéro de téléphone fourni"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:23
+msgid "kids"
+msgstr "enfants"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:24
+msgid "District:"
+msgstr "Quartier :"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:25
+msgid "School:"
+msgstr "École :"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:26
+msgid "Usual bbsitter:"
+msgstr "Bbsitter habituel :"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:29
+msgid "bbsitting already shared"
+msgstr "bbsitting déjà partagés"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:30
+msgid "Edit"
+msgstr "Modifier"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:33
+#, python-format
+msgid "%(username)s's picture"
+msgstr "photo de %(username)s"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:36
+msgid "My group"
+msgstr "Mon groupe"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:43
+msgid "See my friends"
+msgstr "Voir mes amis"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:44
+msgid "Invite new friends"
+msgstr "Inviter des amis"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:49
+msgid "Your planned babysittings"
+msgstr "Dates à venir"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_form.html:6
+msgid "Edit my profile"
+msgstr "Modifier mon profil"
+
+#: bbsittingsharing/templates/bbsittingsharing/parent_form.html:9
+msgid ""
+"You can add details in your profile to better describe your needs of "
+"bbsitting sharing. No data is mandatory."
+msgstr ""
+"Vous pouvez ajouter des précisions dans votre profil pour mieux décrire vos besoins de partage de babysittings. Aucune donnée n'est obligatoire."
+
+#: bbsittingsharing/templates/bbsittingsharing/refer.html:5
+msgid "My referees"
+msgstr "Mes filleuls"
+
+#: bbsittingsharing/templates/bbsittingsharing/refer.html:9
+msgid "An invitation has been sent to"
+msgstr "Une invitation a été envoyé à"
+
+#: bbsittingsharing/templates/bbsittingsharing/refer.html:9
+msgid "Thank you!"
+msgstr "Merci !"
+
+#: bbsittingsharing/templates/notification/book_request.html:2
+#: bbsittingsharing/templates/notification/book_request.txt:2
+#: bbsittingsharing/templates/notification/book_validated.html:2
+#: bbsittingsharing/templates/notification/book_validated.txt:2
+#: bbsittingsharing/templates/notification/refer_request.html:2
+#: bbsittingsharing/templates/notification/refer_request.txt:2
+msgid "Hello"
+msgstr "Bonjour"
+
+#: bbsittingsharing/templates/notification/book_request.html:3
+#: bbsittingsharing/templates/notification/book_request.txt:4
+msgid "wants to book the bbsitting on"
+msgstr "veut réserver le bbsitting du"
+
+#: bbsittingsharing/templates/notification/book_request.html:4
+#: bbsittingsharing/templates/notification/book_request.txt:5
+msgid "To validate it, please go to:"
+msgstr "Pour valider, merci d'aller à l'url :"
+
+#: bbsittingsharing/templates/notification/book_validated.html:4
+#: bbsittingsharing/templates/notification/book_validated.txt:4
+msgid "has validated your booking for the bbsitting on"
+msgstr "a validé votre réservation pour le bbsitting du"
+
+#: bbsittingsharing/templates/notification/refer_request.html:4
+#: bbsittingsharing/templates/notification/refer_request.txt:4
+#, python-format
+msgid ""
+"You have been invited by %(referer)s to join BBSitting Sharing.\n"
+"Please go to: "
+msgstr ""
+"Vous avez été invité par %(referer)s à rejoindre BBSitting Sharing.\n"
+"Merci d'aller à l'url : "
+
+#: bbsittingsharing/templates/registration/activation_complete.html:4
+msgid "Your registration is now complete. Thanks!"
+msgstr "Votre inscription est terminée. Merci !"
+
+#: bbsittingsharing/templates/registration/login.html:8
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Votre nom d'utilisateur et mot de passe ne correspondent pas. Merci de "
+"réessayer."
+
+#: bbsittingsharing/templates/registration/login.html:15
+msgid "login"
+msgstr "se connecter"
+
+#: bbsittingsharing/templates/registration/logout.html:6
+msgid "Thanks for using BBSitting Sharing!"
+msgstr "Merci d'utiliser BBSitting Sharing by Echos Kids."
+
+#: bbsittingsharing/templates/registration/registration_complete.html:5
+msgid "Thanks for registering."
+msgstr "Merci de votre inscription."
+
+#: bbsittingsharing/templates/registration/registration_complete.html:6
+msgid ""
+"As the network is based on trust, we are going to check your reference, and "
+"we'll send you an e-mail."
+msgstr ""
+"Comme le réseau repose sur la confiance, nous allons vérifier notre "
+"parrainage et vous allez recevoir un e-mail."
+
+#: bbsittingsharing/templates/registration/registration_complete.html:7
+msgid "Thank you for your interest in BBSitting Sharing by Echos Kids."
+msgstr ""
+"Merci pour l'intérêt que vous portez à BBSitting Sharing by Echos Kids."
+
+#: bbsittingsharing/templates/registration/registration_complete.html:8
+msgid "See you soon !"
+msgstr "A bientôt !"
