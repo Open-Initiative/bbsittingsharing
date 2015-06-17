@@ -14,4 +14,4 @@ def send_email(recipients, subject, template_name, email_context):
 
 def notify(request, booking, template_name):
     email_context = RequestContext(request, {'from': request.user.get_full_name(), 'booking': booking})
-    send_email([user.email], 'hello', template_name, email_context)
+    send_email([request.user.email], 'hello', template_name, email_context)
