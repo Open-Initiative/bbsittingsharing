@@ -116,7 +116,7 @@ footer a {
     border-bottom: solid #cc3636;
     color: white;
 }
-.panel p {
+.profile p {
     margin: 2em;
     padding: 1em 0;
     border-top: solid #E8E8E8 1px;
@@ -139,9 +139,23 @@ footer a {
     margin-left: auto;
     margin-right: auto;
 }
+.terms h4, .terms h5 {
+    border-top: solid #E8E8E8 1px;
+    padding: 1em 0;
+    margin: 0 1em;
+}
+.terms p {
+    font-weight: lighter;
+}
 
 table.date-search-results td {
     padding: 1em;
+}
+.search-result-selected {
+    color: #fc5151;
+}
+.search-result-selected .search-result a {
+    color: #fc5151;
 }
 td.search-result {
     border: 2px solid #f2f0ed;

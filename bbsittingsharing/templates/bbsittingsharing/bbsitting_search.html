@@ -6,7 +6,7 @@
 <div class="panel">
     <table class="date-search-results">
     {%for bbsitting in bbsitting_list %}
-        <tr{% if bbsitting = selected_bbsitting %}class="search-result-selected"{% endif %}>
+        <tr{% if bbsitting = selected_bbsitting %} class="search-result-selected"{% endif %}>
             <td>
                 {% trans "On" %} {{bbsitting.date}}
             </td>

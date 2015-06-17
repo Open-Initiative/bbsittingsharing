@@ -42,9 +42,9 @@
         <footer>
             <nav class="container">
                 <ul>
-                    <li class="col-md-3"><a href="">{% trans "Terms" %}</a></li>
-                    <li class="col-md-3"><a href="">{% trans "Legal statement" %}</a></li>
-                    <li class="col-md-3"><a href="">{% trans "Contact" %}</a></li>
+                    <li class="col-md-3"><a href="{% url 'terms' %}">{% trans "Terms" %}</a></li>
+                    <li class="col-md-3"><a href="{% url 'legal' %}">{% trans "Legal statement" %}</a></li>
+                    <li class="col-md-3"><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
                     <li class="col-md-3"><a href="{% url 'info' %}">{% trans "Who are we?" %}</a></li>
                 </ul>
             </nav> 

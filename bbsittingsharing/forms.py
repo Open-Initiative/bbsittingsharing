@@ -62,3 +62,10 @@ class BBSittingForm(forms.ModelForm):
 
 class ReferForm(forms.Form):
     referee = forms.EmailField()
+
+class ContactForm(forms.Form):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.EmailField()
+    subject = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea())

@@ -18,7 +18,7 @@
 </div>
 {% endif %}
 
-<div class="col-sm-7 panel panel-margin">
+<div class="col-sm-7 panel panel-margin profile">
     <h3>{{profile.get_full_name}}</h3>
     <p>{{profile.phone|default:_("No phone number provided")}}</p>
     <p><span class="number">{{profile.kidsnb|default:0}}</span> {% trans "kids" %}</p>
