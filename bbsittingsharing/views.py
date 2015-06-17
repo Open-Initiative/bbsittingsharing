@@ -35,11 +35,26 @@ class SearchView(LoginRequiredMixin, generic.ListView):
     """Searches all baby sittings close to a date"""
     model = BBSitting
     template_name = "bbsittingsharing/bbsitting_search.html"
-    def get_queryset(self, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.GET.get('date'):
+            self.bbsitting = None
+            self.date = datetime.strptime(self.request.GET['date'], "%Y%m%d")
+        elif kwargs.get('pk'):
+            self.bbsitting = BBSitting.objects.get(pk=kwargs['pk'])
+            self.date = self.bbsitting.date
+        else:
+            raise ValueError
+        return super(SearchView, self).dispatch(request, *args, **kwargs)
+    
+    def get_queryset(self):
         """Returns all BBSittings in a +/- 3 days range"""
-        date = datetime.strptime(self.kwargs['date'], "%Y%m%d")
         delta = timedelta(days=3)
-        return BBSitting.objects.filter(date__range=[date-delta, date+delta])
+        return BBSitting.objects.filter(date__range=[self.date-delta, self.date+delta])
+    
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context["selected_bbsitting"] = self.bbsitting
+        return context
 
 class CreateView(LoginRequiredMixin, generic.CreateView):
     """BBSitting creation view, saving the author"""

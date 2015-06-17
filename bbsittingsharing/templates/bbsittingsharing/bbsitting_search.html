@@ -1,17 +1,40 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 {% load i18n %}
 
 {% block content %}
-<table>
-{%for bbsitting in bbsitting_list %}
-    <tr>
-        <td><a href="{% url 'profile' bbsitting.author.username %}">{{bbsitting.author}}</td>
-        <td>{{bbsitting.start}}</td>
-        <td>{{bbsitting.bbsitter_found}}</td>
-        <td><a href="{% url 'book' bbsitting.pk %}">{% trans "book" %}</a></td>
-    </tr>
-{% empty %}
-    {% trans "No bbsitting found near that date." %}
-{% endfor %}
-</table>
+<div class="panel">
+    <table class="date-search-results">
+    {%for bbsitting in bbsitting_list %}
+        <tr{% if bbsitting = selected_bbsitting %}class="search-result-selected"{% endif %}>
+            <td>
+                {% trans "On" %} {{bbsitting.date}}
+            </td>
+            <td class="search-result">
+                <a href="{% url 'profile' bbsitting.author.username %}">{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</a>
+                {% trans "From" %} {{bbsitting.start|date:"H:i"}}
+                Bbsitter
+                {% if bbsitting.bbsitter_found %}
+                <span class="glyphicon glyphicon-ok"></span>{% trans 'yes' %}
+                {% else %}
+                <span class="glyphicon glyphicon-remove"></span>{% trans 'no' %}
+                {% endif %}
+            </td>
+
+            <td>
+                {% if bbsitting.booked.count < bbsitting.children_capacity and bbsitting.author != user %}
+                <a class="btn bookbtn" href="{% url 'book' bbsitting.pk %}" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "book" %}</a>
+                {% else %}
+                <span class="btn bookbtn-full" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "not available" %}</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        {% trans "No bbsitting found near that date." %}
+    {% endfor %}
+    </table>
+    <a class="btn panelbtn pull-left" href="{% url 'agenda' %}">{% trans "Back to the calendar" %}</a>
+    <a class="btn panelbtn pull-right" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
+    <div class="clearfix"></div>
+</div>
 {% endblock %}

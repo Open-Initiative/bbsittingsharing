@@ -125,8 +125,11 @@ footer a {
     font-size: 2em;
     color: #fc5151;
 }
-.panel .glyphicon {
+.panel .glyphicon-calendar {
     color: #F2F0ED;
+}
+.date-search-results .glyphicon {
+    color: #fc5151;
 }
 .panel-margin {
     margin: 2em;
@@ -137,6 +140,12 @@ footer a {
     margin-right: auto;
 }
 
+table.date-search-results td {
+    padding: 1em;
+}
+td.search-result {
+    border: 2px solid #f2f0ed;
+}
 img.parents {
     position: absolute;
     height: 200px;
@@ -174,6 +183,17 @@ img.parents {
     margin: 1em auto;
     color: white;
     text-align: center;
+}
+.bookbtn {
+    background: #67acf2;
+    border-bottom: solid #183c77;
+    color: white;
+}
+.bookbtn-full {
+    background: #183c77;
+    color: white;
+    font-weight: lighter;
+    font-style: oblique;
 }
 
 img.profile {
