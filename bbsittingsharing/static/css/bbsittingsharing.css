@@ -147,7 +147,7 @@ footer a {
     color: #fc5151;
 }
 .panel-margin {
-    margin: 2em;
+    margin: 0 0 2em 2em;
 }
 .panel-center {
     float: none;
@@ -271,10 +271,13 @@ img.profile {
     margin: 10px;
     padding: 3px;
     border-radius: 30px;
+    text-align: center;
 }
 .calendar-day.booked {
     background: #fc5151;
     margin-top: 0;
+}
+.calendar-day.booked a {
     color: white;
 }
 .calendar-day.booked::after {
@@ -291,12 +294,11 @@ img.profile {
     margin: -25px 0;
     padding: 8px;
     transition-property: width, height, margin, padding;
-    transition-duration: .5s;
+    transition-duration: .1s;
 }
 .calendar-day.booked:hover::after {
     top: 52px;
-/*    left: -15px;*/
     border-width: 25px 15px;
     transition-property: top, left, border-width;
-    transition-duration: .5s;
+    transition-duration: .1s;
 }

@@ -47,10 +47,15 @@ class Parent(AbstractUser):
     def picture_name(self, filename):
         """Generates the picture filename from the username"""
         return '%s%s'%(self.username, splitext(filename)[1])
-    picture     = models.ImageField(upload_to=picture_name, default="/static/user.jpg")
+    picture     = models.ImageField(upload_to=picture_name, default="/static/user.png")
+    
+    def shared_nb(self):
+        """Gets the number of babysittings the user has proposed and booked"""
+        return self.bbsitting_set.count() + self.booked.count()
     
     def get_full_name(self):
         return super(Parent, self).get_full_name() or self.username
+    
     def __unicode__(self):
         return self.get_full_name()
 

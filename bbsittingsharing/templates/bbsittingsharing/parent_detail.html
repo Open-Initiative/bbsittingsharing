@@ -18,26 +18,39 @@
 </div>
 {% endif %}
 
-<div class="col-sm-7 panel panel-margin profile">
+<div class="col-sm-7 panel profile">
     <h3>{{profile.get_full_name}}</h3>
     <p>{{profile.phone|default:_("No phone number provided")}}</p>
-    <p><span class="number">{{profile.kidsnb|default:0}}</span> {% trans "kids" %}</p>
+    <p>
+        <span class="number">{{profile.kidsnb|default:0}}</span>
+        {% blocktrans count counter=profile.kidsnb|default:0 %}kid{% plural %}kids{% endblocktrans %}
+    </p>
     <p>{% trans "District:" %} {{profile.groups.first}}</p>
     <p>{% trans "School:" %} {{profile.school}}</p>
     <p>{% trans "Usual bbsitter:" %} {{profile.bbsitter}}</p>
-    <p><span class="number">{% if profile.ok_at_home %}OK{% else %}NOK{% endif %}</span> {% trans "to host a bbsitting" %}</p>
-    <p><span class="number">{% if profile.ok_at_others %}OK{% else %}NOK{% endif %}</span> {% trans "to go to someone else's place" %}</p>
+    <p>
+        <span class="number">{% if profile.ok_at_home %}OK{% else %}NOK{% endif %}</span>
+        {% trans "to host a bbsitting" %}
+    </p>
+    <p>
+        <span class="number">{% if profile.ok_at_others %}OK{% else %}NOK{% endif %}</span>
+        {% trans "to go to someone else's place" %}
+    </p>
     <p>{% trans "Available equipment" %}</p>
+    
     <ul>{% for equipment in profile.equipment.all %}
         <li>{{equipment.name}}</li>
     {% endfor %}</ul>
-    <p><span class="number">{{profile.bbsitting_set.count}}</span> {% trans "bbsitting already shared" %}</p>
+    
+    <p><span class="number">{{profile.shared_nb}}</span> {% trans "bbsitting already shared" %}</p>
     <a class="btn panelbtn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
 </div>
-<div class="col-sm-3 panel panel-margin">
+<div class="col-sm-4 panel panel-margin">
     <img class="profile" alt="{% blocktrans with name=profile.username%}{{username}}'s picture{% endblocktrans %} '" src="{{profile.picture.url}}" />
 </div>
-<div class="col-sm-3 panel panel-margin">
+
+{% if profile == user %}
+<div class="col-sm-4 panel panel-margin">
     <h3>{% trans "My group" %}</h3>
     {% for user in user.friends.all|slice:":4" %}
     <a href="{% url 'profile' user.username %}">
@@ -48,9 +61,10 @@
     <a class="btn panelbtn profile-friends-btn" href="{% url 'friends' %}">{% trans "See my friends" %}</a>
     <a class="btn panelbtn profile-friends-btn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
 </div>
+{% endif %}
 <div class="clearfix"></div>
 
-<div class="col-sm-10 panel panel-margin">
+<div class="panel">
     <h3><span class="glyphicon glyphicon-calendar"></span> {% trans "Your planned babysittings" %}</h3>
     {% for bbsitting in profile.bbsitting_set.all %}
         <p><a href="{% url 'detail' bbsitting.pk %}">{{bbsitting}}</a></p>
