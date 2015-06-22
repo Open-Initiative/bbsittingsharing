@@ -17,7 +17,7 @@ class ParentForm(UserCreationForm):
     class Meta:
         model = UserModel()
         fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "email", "groups", "district", "referer")
-        widgets = {'groups': ListSelect(), 'referer': forms.TextInput()}
+        widgets = {'groups': ListSelect(), 'referer': forms.EmailInput()}
         labels = {'groups': _("Arrondissement")}
         help_texts = {'groups': None}
     
@@ -25,9 +25,9 @@ class ParentForm(UserCreationForm):
         """gets the referer if it exists or raise a form error"""
         referer = self.cleaned_data['referer']
         if referer is None:
-            return None
+            raise forms.ValidationError(_(u'Please provide the email of the person who introduced you.'))
         try:
-            user = Parent.objects.get(username=referer)
+            user = Parent.objects.get(email=referer)
         except Parent.DoesNotExist:
             raise forms.ValidationError(_(u'User "%s" does not exist.') % referer)
         return user

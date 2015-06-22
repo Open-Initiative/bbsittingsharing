@@ -95,10 +95,6 @@ header nav ul {
 main {
     max-width: 750px;
 }
-main form {
-    width: 50%;
-    margin: auto;
-}
 footer {
     position: absolute;
     bottom: 0px;

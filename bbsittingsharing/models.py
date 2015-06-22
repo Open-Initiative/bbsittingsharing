@@ -40,9 +40,9 @@ class Parent(AbstractUser):
     ok_at_home  = models.BooleanField(default=True, verbose_name="Ok "+_("to host a bbsitting"))
     ok_at_others= models.BooleanField(default=True, verbose_name="Ok "+_("to go to someone else's place"))
     friends     = models.ManyToManyField("self", blank=True, null=True)
-    referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True)
-    district    = models.ForeignKey(District, related_name="users", null=True)
-    equipment   = models.ManyToManyField(Equipment)
+    referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True, verbose_name=_("Referer"))
+    district    = models.ForeignKey(District, related_name="users", null=True, verbose_name=_("District"))
+    equipment   = models.ManyToManyField(Equipment, verbose_name=_("Equipment"))
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""
