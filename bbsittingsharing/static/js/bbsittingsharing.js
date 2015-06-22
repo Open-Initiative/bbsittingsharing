@@ -13,7 +13,7 @@ function stepCalendar(step) {
 function renderDay(date, cell) {
     var div = $("<div id='"+date.format()+"'>");
     div.addClass("calendar-day");
-    div.text(date.format("D"));
+    div.html('<a href="/search?date='+ date.format() +'">'+ date.format("D") +'</a>');
     div.appendTo(cell);
     return false;
 }

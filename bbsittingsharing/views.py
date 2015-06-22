@@ -38,7 +38,7 @@ class SearchView(LoginRequiredMixin, generic.ListView):
     def dispatch(self, request, *args, **kwargs):
         if self.request.GET.get('date'):
             self.bbsitting = None
-            self.date = datetime.strptime(self.request.GET['date'], "%Y%m%d")
+            self.date = datetime.strptime(self.request.GET['date'], "%Y-%m-%d")
         elif kwargs.get('pk'):
             self.bbsitting = BBSitting.objects.get(pk=kwargs['pk'])
             self.date = self.bbsitting.date
@@ -54,6 +54,7 @@ class SearchView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
         context["selected_bbsitting"] = self.bbsitting
+        context["selected_date"] = self.date
         return context
 
 class CreateView(LoginRequiredMixin, generic.CreateView):
@@ -82,7 +83,7 @@ class ValidateView(LoginRequiredMixin, generic.TemplateView):
     def get(self, request, pk, booking_pk):
         booking = Booking.objects.get(pk=booking_pk)
         #check the bbsitting id and author
-        if booking.bbsitting.pk != pk or booking.bbsitting.author != request.user:
+        if booking.bbsitting.pk != int(pk) or booking.bbsitting.author != request.user:
             raise Http404
         booking.validated = True
         booking.save()

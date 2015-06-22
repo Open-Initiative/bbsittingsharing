@@ -12,7 +12,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', generic.TemplateView.as_view(template_name="index.html"), name="index"),
     url(r'^new$', login_required(CreateView.as_view(model=BBSitting)), name="new"),
-    url(r'^search/(?P<pk>\d+)$', SearchView.as_view(), name="detail"),
+    url(r'^search/(?P<pk>\d*)$', SearchView.as_view(), name="detail"),
     url(r'^agenda$', login_required(generic.ListView.as_view(model=BBSitting)), name="agenda"),
     url(r'^(?P<pk>\d+)/book$', BookView.as_view(), name="book"),
     url(r'^(?P<pk>\d+)/validate/(?P<booking_pk>\d+)$', ValidateView.as_view(), name="validate"),
