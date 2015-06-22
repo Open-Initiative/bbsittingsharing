@@ -2,8 +2,15 @@
 {% load i18n %}
 {% load bootstrap %}
 {% block content %}
-<div id="pagetitle">
-    {% trans "An e-mail has been sent to" %} {{recipient}}. {% trans "You will be contacted very soon." %}
-    {% trans "Don't forget, it's always better to meet with the other parents and the baby sitter!" %}
+<div class="panel panel-confirm">
+    {% if already_requested %}
+        <div class="panel-advice">{% trans "You already requested to book this bbsitting!" %}</div>
+    {% else %}
+        {% trans "You will be contacted directly. Thank you for your request." %} {{recipient}} {% trans "will receive an email and you'll receive the answer directly by email." %}
+        <div class="panel-advice">{% trans "Don't forget, it's always better to meet with the other parents and the baby sitter!" %}</div>
+        <div class="team-sign">{% trans "The Bbsitting Sharing team" %}</div>
+    {% endif %}
 </div>
+<a class="btn panelbtn pull-left" href="{% url 'calendar' %}">{% trans "Calendar" %}</a>
+<a class="btn panelbtn pull-right" href="{% url 'index' %}">{% trans "Home" %}</a>
 {% endblock %}

@@ -6,10 +6,12 @@ from django.utils.translation import ugettext as _
 from bbsittingsharing import settings
 
 class BBSitting(models.Model):
-   date             = models.DateField()
-   start            = models.TimeField()
-   bbsitter_found   = models.BooleanField()
-   children_capacity= models.IntegerField()
+   date             = models.DateField(verbose_name=_("Date"))
+   start            = models.TimeField(verbose_name=_("Start"))
+   bbsitter_found   = models.BooleanField(verbose_name=_("Have you found a bbsitter?"))
+   at_authors       = models.BooleanField(verbose_name=_("Would you rather have the bbsitting at your place?"))
+   authors_children = models.IntegerField(verbose_name=_("How many children will be present on your side?"))
+   children_capacity= models.IntegerField(verbose_name=_("How many children will you share this bbsitting with at most?"))
    author           = models.ForeignKey(settings.AUTH_USER_MODEL)
    booked           = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Booking', related_name="booked")
    
@@ -17,7 +19,7 @@ class BBSitting(models.Model):
        return reverse('detail', args=[str(self.id)])
        
    def __unicode__(self):
-      return _("At %(author)s's on %(date)s")%{'author':self.author.get_full_name(), 'date':self.date}
+      return _("At %(author)s's on %(date)s %(with)s babysitter")%{'author':self.author.get_full_name(), 'date':self.date, 'with': 'with' if self.bbsitter_found else 'without'}
 
 
 class Equipment(models.Model):
@@ -42,7 +44,7 @@ class Parent(AbstractUser):
     friends     = models.ManyToManyField("self", blank=True, null=True)
     referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True, verbose_name=_("Referer"))
     district    = models.ForeignKey(District, related_name="users", null=True, verbose_name=_("District"))
-    equipment   = models.ManyToManyField(Equipment, verbose_name=_("Equipment"))
+    equipment   = models.ManyToManyField(Equipment, blank=True, verbose_name=_("Equipment"))
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""

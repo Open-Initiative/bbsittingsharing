@@ -16,28 +16,32 @@
             </td>
             <td class="search-result">
                 <a href="{% url 'profile' bbsitting.author.username %}">{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</a>
-                {% trans "From" %} {{bbsitting.start|date:"H:i"}}
-                Bbsitter
-                {% if bbsitting.bbsitter_found %}
-                <span class="glyphicon glyphicon-ok"></span>{% trans 'yes' %}
-                {% else %}
-                <span class="glyphicon glyphicon-remove"></span>{% trans 'no' %}
-                {% endif %}
+                <span class="result-details">
+                    {% trans "From" %} {{bbsitting.start|date:"H:i"}}
+                    Bbsitter
+                    {% if bbsitting.bbsitter_found %}
+                    <span class="glyphicon glyphicon-ok"></span>
+                    {% else %}
+                    <span class="glyphicon glyphicon-remove"></span>
+                    {% endif %}
+                </span>
             </td>
 
             <td>
-                {% if bbsitting.booked.count or bbsitting.author == user %}
+            {% if bbsitting.author != user %}
+                {% if bbsitting.booked.count %}
                 <span class="btn bookbtn-full" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "not available" %}</span>
                 {% else %}
                 <a class="btn bookbtn" href="{% url 'book' bbsitting.pk %}" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "book" %}</a>
                 {% endif %}
+            {% endif %}
             </td>
         </tr>
     {% empty %}
         {% trans "No bbsitting found near that date." %}
     {% endfor %}
     </table>
-    <a class="btn panelbtn pull-left" href="{% url 'agenda' %}">{% trans "Back to the calendar" %}</a>
+    <a class="btn panelbtn pull-left" href="{% url 'calendar' %}">{% trans "Back to the calendar" %}</a>
     <a class="btn panelbtn pull-right" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
     <div class="clearfix"></div>
 </div>

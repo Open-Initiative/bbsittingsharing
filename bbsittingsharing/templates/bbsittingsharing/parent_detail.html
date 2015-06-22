@@ -13,7 +13,7 @@
 {% if profile == user %}
 <div id="pagetitle">
     <h4>{% trans "Welcome" %} {{user.first_name}} !</h4>
-    <a class="btn" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
+    <a class="btn" href="{% url 'calendar' %}">{% trans "Calendar" %}</a>
     <a class="btn" href="{% url 'refer' %}">{% trans "Refer" %}</a>
 </div>
 {% endif %}
@@ -21,12 +21,13 @@
 <div class="col-sm-7 panel profile">
     <h3>{{profile.get_full_name}}</h3>
     <p>{{profile.phone|default:_("No phone number provided")}}</p>
+    <p>{% trans "Arrondissement" %} {{profile.groups.first}}</p>
+    <p>{% trans "District" %} {{profile.district}}</p>
+    <p>{% trans "School" %} {{profile.school}}</p>
     <p>
         <span class="number">{{profile.kidsnb|default:0}}</span>
         {% blocktrans count counter=profile.kidsnb|default:0 %}kid{% plural %}kids{% endblocktrans %}
     </p>
-    <p>{% trans "District:" %} {{profile.groups.first}}</p>
-    <p>{% trans "School:" %} {{profile.school}}</p>
     <p>{% trans "Usual bbsitter:" %} {{profile.bbsitter}}</p>
     <p>
         <span class="number">{% if profile.ok_at_home %}OK{% else %}NOK{% endif %}</span>
@@ -43,7 +44,10 @@
     {% endfor %}</ul>
     
     <p><span class="number">{{profile.shared_nb}}</span> {% trans "bbsitting already shared" %}</p>
+    
+    {% if profile == user %}
     <a class="btn panelbtn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
+    {% endif %}
 </div>
 <div class="col-sm-4 panel panel-margin">
     <img class="profile" alt="{% blocktrans with name=profile.username%}{{username}}'s picture{% endblocktrans %} '" src="{{profile.picture.url}}" />
@@ -53,26 +57,29 @@
 <div class="col-sm-4 panel panel-margin">
     <h3>{% trans "My group" %}</h3>
     {% for user in user.friends.all|slice:":4" %}
-    <a href="{% url 'profile' user.username %}">
-        <img class="userthumb" src="{{user.picture.url}}" alt="{% blocktrans %}{{user}}'s picture{% endblocktrans %}" />
-        {{user.get_full_name}}
-    </a>
+    <div class="userlist pull-left">
+        <a href="{% url 'profile' user.username %}">
+            <img class="userthumb" src="{{user.picture.url}}" alt="{% blocktrans %}{{user}}'s picture{% endblocktrans %}" />
+            {{user.get_full_name}}
+        </a>
+        <div class="clearfix"></div>
+    </div>
     {% endfor %}
     <a class="btn panelbtn profile-friends-btn" href="{% url 'friends' %}">{% trans "See my friends" %}</a>
     <a class="btn panelbtn profile-friends-btn" href="{% url 'refer' %}">{% trans "Invite new friends" %}</a>
 </div>
-{% endif %}
 <div class="clearfix"></div>
 
-<div class="panel">
+<div class="panel planning">
     <h3><span class="glyphicon glyphicon-calendar"></span> {% trans "Your planned babysittings" %}</h3>
     {% for bbsitting in profile.bbsitting_set.all %}
         <p><a href="{% url 'detail' bbsitting.pk %}">{{bbsitting}}</a></p>
     {% endfor %}
     {% comment %}<input id="searchdate"/>
     <button class="btn panelbtn" onclick="document.location = '/search/'+document.getElementById('searchdate').value">{% trans 'Search' %}</button>{% endcomment %}
-    <a class="btn panelbtn" href="{% url 'agenda' %}">{% trans "Calendar" %}</a>
+    <a class="btn panelbtn" href="{% url 'calendar' %}">{% trans "Calendar" %}</a>
     <a class="btn panelbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
 </div>
+{% endif %}
 {% endwith %}
 {% endblock %}

@@ -135,7 +135,7 @@ footer a {
     color: white;
     font-size: 1.2em;
 }
-.profile p {
+.profile p, .planning p {
     margin: 1em;
     padding: 1em 0;
     border-top: solid #E8E8E8 1px;
@@ -160,6 +160,10 @@ footer a {
 }
 .panel-confirm {
     text-align: center;
+}
+.panel-advice {
+    color: #fc5151;
+    font-style: oblique;
 }
 .team-sign {
     margin-top: 2em;
@@ -186,6 +190,9 @@ table.date-search-results td {
 }
 td.search-result {
     border: 2px solid #f2f0ed;
+}
+td.search-result .result-details {
+    font-weight: lighter;
 }
 img.parents {
     position: absolute;
@@ -235,7 +242,7 @@ img.parents {
 img.profile {
     max-width: 90%;
 }
-.profile-edit-help {
+.page-help {
     width: 80%;
     margin: 1em auto;
     padding: 1em;
@@ -243,8 +250,16 @@ img.profile {
     font-size: .8em;
     font-style: oblique;
 }
+.userlist {
+    font-size: 80%;
+    margin: .2em;
+}
+.userlist.pull-left {
+    max-width: 45%;
+}
 .userthumb {
-    height:  5em;
+    float: left;
+    height: 3em;
 }
 
 /* Calendar customization */
@@ -278,6 +293,13 @@ img.profile {
     padding: 3px;
     border-radius: 30px;
     text-align: center;
+}
+.fc-day:hover {
+    position: relative;
+    top: -5px;
+    left: -5px;
+    z-index: 5;
+    background: #f2f0ed;
 }
 .calendar-day.booked {
     background: #fc5151;

@@ -1,6 +1,5 @@
 {% load bootstrap %}
-
-<div class="form-group col-md-{%if field.field.widget.input_type == 'email'%}12{% else %}6{% endif %}{% if field.errors %} has-error{% endif %}">
+<div class="form-group col-md-{%if field.field.widget.input_type == 'email' or field.field.widget.attrs.rows %}12{% else %}6{% endif %}{% if field.errors %} has-error{% endif %}">
     {% if field|is_checkbox %}
         <div class="{{ classes.single_value }}">
             <div class="checkbox">
