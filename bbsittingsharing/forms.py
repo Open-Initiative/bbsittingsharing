@@ -53,7 +53,7 @@ class ParentForm(UserCreationForm):
 class UpdateProfileForm(forms.ModelForm):
     equipment = forms.ModelMultipleChoiceField(queryset = Equipment.objects.filter(default=True),
         widget=forms.CheckboxSelectMultiple(), label=_("Available equipment"))
-    other_equipment = forms.CharField(label=_("Other"))
+    other_equipment = forms.CharField(label=_("Other"), required=False)
     class Meta:
         model = Parent
         fields = ['first_name', 'last_name', 'email', 'phone', 'kidsnb', 'school', 'bbsitter', 'ok_at_home', 'ok_at_others', 'picture', 'equipment']
