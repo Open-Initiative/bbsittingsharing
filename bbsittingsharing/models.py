@@ -52,7 +52,7 @@ class Parent(AbstractUser):
     def get_full_name(self):
         return super(Parent, self).get_full_name() or self.username
     def __unicode__(self):
-        return _("%(name)s's profile"%{'name':self.get_full_name()})
+        return self.get_full_name()
 
 class Booking(models.Model):
     parent = models.ForeignKey(Parent)

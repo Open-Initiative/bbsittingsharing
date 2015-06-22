@@ -1,1 +1,0 @@
-Register with http://{{site}}/accounts/activate/{{activation_key}}

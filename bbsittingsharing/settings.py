@@ -62,6 +62,7 @@ MEDIA_ROOT = os.path.dirname(BASE_DIR)+'/pics/'
 MEDIA_URL = '/pics/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
+SEND_ACTIVATION_EMAIL = False
 LOGIN_REDIRECT_URL = '/'
 INCLUDE_REGISTER_URL = False
 AUTH_USER_MODEL = 'bbsittingsharing.Parent'

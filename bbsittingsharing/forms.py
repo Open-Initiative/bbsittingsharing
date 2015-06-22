@@ -11,6 +11,7 @@ class ListSelect(forms.Select):
         return [super(ListSelect, self).value_from_datadict(data, files, name)]
 
 class ParentForm(UserCreationForm):
+    referer = forms.EmailField()
     tos = forms.BooleanField(widget=forms.CheckboxInput,
          label=_('I have read and agree to the Terms of Service'),
          error_messages={'required': _("You must agree to the terms to register")})

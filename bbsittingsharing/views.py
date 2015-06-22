@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.http import Http404, HttpResponseForbidden
 from django.shortcuts import redirect
 from django.template import RequestContext
@@ -91,7 +91,7 @@ class ValidateView(LoginRequiredMixin, generic.TemplateView):
 
 class FriendsView(LoginRequiredMixin, generic.ListView):
     """Shows the list of referers, referees, and members of the same group"""
-    template_name="bbsittingsharing/friends_list.html"
+    template_name = "bbsittingsharing/friends_list.html"
     context_object_name = 'friends'
     def get(self, request, *args, **kwargs):
         self.queryset = request.user.friends.all()
@@ -99,8 +99,9 @@ class FriendsView(LoginRequiredMixin, generic.ListView):
 
 class ReferView(LoginRequiredMixin, generic.edit.FormView):
     """Shows the list of referees, and members of the same group"""
-    template_name="bbsittingsharing/refer_confirm.html"
+    template_name = "bbsittingsharing/refer.html"
     form_class = ReferForm
+    success_url = reverse_lazy("refer_confirm")
     def get_context_data(self, **kwargs):
         context = super(ReferView, self).get_context_data(**kwargs)
         context['referees'] = self.request.user.referees.all()
@@ -109,4 +110,4 @@ class ReferView(LoginRequiredMixin, generic.edit.FormView):
         email_context = RequestContext(self.request, {'referer': self.request.user})
         recipient = form.cleaned_data['referee']
         send_email([recipient], 'hello', 'refer_request', email_context)
-        return self.render_to_response(self.get_context_data(form=form, recipient=recipient))
+        return super(ReferView, self).form_valid(form)
