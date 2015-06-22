@@ -61,7 +61,7 @@ class BBSittingForm(forms.ModelForm):
         exclude = ['author', 'booked']
 
 class ReferForm(forms.Form):
-    referee = forms.EmailField()
+    referee = forms.EmailField(label=_("Referee"))
 
 class ContactForm(forms.Form):
     first_name = forms.CharField()

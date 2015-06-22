@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="panel panel-confirm">
+    <p>{% trans "Thank you for your reference." %}</p>
+    <p>{% trans "Your referee is going to receive an email inviting him/her to register on BBSitting Sharing. He/she will soon appear in your group and you'll be able to share your planning with him/her!" %}</p>
+    <div class="team-sign">{% trans "The Bbsitting Sharing team" %}</div>
+</div>
+<a class="btn panelbtn pull-right" href="{% url 'index' %}">{% trans "Home" %}</a>
+{% endblock %}

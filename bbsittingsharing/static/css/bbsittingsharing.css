@@ -28,6 +28,17 @@ body {
     margin-bottom: 190px;
     background-color: #f2f0ed;
 }
+#tasdanimaux {
+    position: absolute;
+    top: 70px;
+    z-index: 10;
+    width: 10%;
+    left: 50px;
+}
+#tasdanimaux.scrolled {
+    position: fixed;
+    top: 0;
+}
 header {
     height: 140px;
     padding: 2em;
@@ -47,6 +58,9 @@ header h1 a {
     font-size: .8em;
     letter-spacing: 5px;
 }
+#byechokids {
+    width: 160px;
+}
 header nav {
     float: right;
     font-weight: bold;
@@ -57,11 +71,10 @@ header nav ul {
 }
 #pagetitle {
     position: relative;
-    width: 70%;
     margin: 1em auto;
-    padding: 1.2em;
+    padding: .7em;
     background: #67acf2;
-    border-radius: 15px;
+    border-radius: 10px;
     color: white;
     text-align: center;
     font-size: 1.5em;
@@ -73,11 +86,14 @@ header nav ul {
     width: 8em;
 }
 #pagetitle nav {
-wi  dth: 100%;
+    width: 100%;
 }
 #pagetitle ul {
     list-style-type: none;
     padding: 0;
+}
+main {
+    max-width: 750px;
 }
 main form {
     width: 50%;
@@ -113,8 +129,11 @@ footer a {
 }
 .panelbtn {
     background: #fc5151;
-    border-bottom: solid #cc3636;
+    border-bottom: 5px solid #cc3636;
+    margin: 1em;
+    padding: .7em 1em;
     color: white;
+    font-size: 1.2em;
 }
 .profile p {
     margin: 2em;
@@ -138,6 +157,14 @@ footer a {
     float: none;
     margin-left: auto;
     margin-right: auto;
+}
+.panel-confirm {
+    text-align: center;
+}
+.team-sign {
+    margin-top: 2em;
+    color: #67acf2;
+    text-transform: uppercase;
 }
 .terms h4, .terms h5 {
     border-top: solid #E8E8E8 1px;
@@ -191,13 +218,6 @@ img.parents {
     width: 100%;
     margin: .4em;
 }
-.calendarbtn {
-    background: #fc5151;
-    border-bottom: solid #cc3636;
-    margin: 1em auto;
-    color: white;
-    text-align: center;
-}
 .bookbtn {
     background: #67acf2;
     border-bottom: solid #183c77;
@@ -213,9 +233,6 @@ img.parents {
 img.profile {
     max-width: 90%;
 }
-#calendar-right .fc-right {
-    display: none;
-}
 .profile-edit-help {
     width: 50%;
     margin: 1em auto;
@@ -224,7 +241,66 @@ img.profile {
     font-size: .8em;
     font-style: oblique;
 }
-
 .userthumb {
     height:  5em;
+}
+
+/* Calendar customization */
+.calendarpanel {
+    position: relative;
+}
+.fc-right {
+    display: none;
+}
+.fc-basic-view .fc-body .fc-row {
+    min-height: 2em;
+}
+.fc-content-skeleton {
+    display: none;
+}
+.calendar-arrow {
+    position: absolute;
+    top: 50%;
+    font-size: 1.5em;
+}
+.calendar-arrow.left {
+    left: 0;
+}
+.calendar-arrow.right {
+    right: 0;
+}
+.calendar-day {
+    height: 18px;
+    width: 18px;
+    margin: 10px;
+    padding: 3px;
+    border-radius: 30px;
+}
+.calendar-day.booked {
+    background: #fc5151;
+    margin-top: 0;
+    color: white;
+}
+.calendar-day.booked::after {
+    content: " ";
+    position: relative;
+    border: solid 10px transparent;
+    border-top: solid 15px #fc5151;
+    top: 28px;
+    left: -20px;
+}
+.calendar-day.booked:hover {
+    height: 28px;
+    width: 28px;
+    margin: -25px 0;
+    padding: 8px;
+    transition-property: width, height, margin, padding;
+    transition-duration: .5s;
+}
+.calendar-day.booked:hover::after {
+    top: 52px;
+/*    left: -15px;*/
+    border-width: 25px 15px;
+    transition-property: top, left, border-width;
+    transition-duration: .5s;
 }

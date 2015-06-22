@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load bootstrap %}
 
 {% block content %}
-    <h3>{% trans "My referees" %}</h3>
-    {% include "bbsittingsharing/friends.html" with users=referees %}
-    
-    {% if recipient %}
-    {% trans "An invitation has been sent to" %} {{recipient}}. {% trans "Thank you!" %}
-    {% endif %}
-
+<div id="pagetitle">
+    <h3>{% trans "Refer to a friend" %}</h3>
+</div>
+<div>
     <form method="POST">
         {% csrf_token %}
-        {{form}}
-        <input type="submit" />
+        {{form|bootstrap}}
+        <input type="submit" class="btn panelbtn pull-right" />
+        <div class="clearfix"></div>
     </form>
+</div>
 {% endblock %}

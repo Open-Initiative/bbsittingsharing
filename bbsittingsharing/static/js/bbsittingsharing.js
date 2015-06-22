@@ -4,6 +4,30 @@ function syncCalendars(view, element) {
     $('#calendar-right').fullCalendar('changeView', 'month');
 }
 
-function selectDate(event, jsEvent, view) {
-    console.log(event);
+function stepCalendar(step) {
+    var moment = $('#calendar-left').fullCalendar('getDate').add(step, 'month');
+    $('#calendar-left').fullCalendar('gotoDate', moment);
+    $('#calendar-left').fullCalendar('changeView', 'month');
 }
+
+function renderDay(date, cell) {
+    var div = $("<div id='"+date.format()+"'>");
+    div.addClass("calendar-day");
+    div.text(date.format("D"));
+    div.appendTo(cell);
+    return false;
+}
+
+function renderEvent(event, element) {
+    var div = $("#"+event.start.format());
+    div.addClass("booked");
+    return false;
+}
+
+$(function() {
+    var tasdanimaux = $("#tasdanimaux");
+    $(document).scroll(function(e) {
+        if ($(this).scrollTop() > 70) tasdanimaux.addClass("scrolled");
+        else tasdanimaux.removeClass("scrolled");
+    });
+});

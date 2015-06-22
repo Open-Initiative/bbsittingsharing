@@ -4,8 +4,8 @@
 {% block scripts %}
 <script>
     $(document).ready(function() {
-        $('#calendar-right').fullCalendar({ 'events': {{bbsitting_list|bbjson}}, height: 350});
-        $('#calendar-left').fullCalendar({ 'events': {{bbsitting_list|bbjson}}, height: 350, 'viewRender': syncCalendars});
+        $('#calendar-right').fullCalendar({lang: 'fr', 'events': {{bbsitting_list|bbjson}}, height: 350, eventRender: renderEvent, dayRender: renderDay});
+        $('#calendar-left').fullCalendar({lang: 'fr', 'events': {{bbsitting_list|bbjson}}, height: 350, 'viewRender': syncCalendars, eventRender: renderEvent, dayRender: renderDay});
     });
 </script>
 {% endblock %}
@@ -13,10 +13,13 @@
 <div id="pagetitle">
     {% trans "Calendar" %}
 </div>
-<a class="btn panelbtn calendarbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
-<div class="col-sm-9 panel panel-center">
+<div class="text-center"><a class="btn panelbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a></div>
+{% trans "Or click directly on a date to book a bbsitting" %}
+<div class="panel calendarpanel">
+    <div class="btn calendar-arrow left glyphicon glyphicon-menu-left" onclick="stepCalendar(-1)"></div>
     <div id="calendar-left" class="col-sm-6"></div>
     <div id="calendar-right" class="col-sm-6"></div>
+    <div class="btn calendar-arrow right glyphicon glyphicon-menu-right" onclick="stepCalendar(+1)"></div>
     <div class="clearfix"></div>
 </div>
 {% endblock %}

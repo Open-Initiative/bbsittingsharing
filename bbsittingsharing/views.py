@@ -99,7 +99,7 @@ class FriendsView(LoginRequiredMixin, generic.ListView):
 
 class ReferView(LoginRequiredMixin, generic.edit.FormView):
     """Shows the list of referees, and members of the same group"""
-    template_name="bbsittingsharing/refer.html"
+    template_name="bbsittingsharing/refer_confirm.html"
     form_class = ReferForm
     def get_context_data(self, **kwargs):
         context = super(ReferView, self).get_context_data(**kwargs)

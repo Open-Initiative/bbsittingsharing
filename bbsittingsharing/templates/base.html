@@ -12,13 +12,14 @@
         <script src='{% static "js/jquery.min.js" %}'></script>
         <script src='{% static "js/moment.min.js" %}'></script>
         <script src='{% static "js/bootstrap.js" %}'></script>
-        <script src='{% static "js/moment-locale/"|add:LANGUAGE_CODE|add:".js" %}'></script>
         <script src='{% static "js/bootstrap-datetimepicker.min.js" %}'></script>
         <script src='{% static "js/fullcalendar.js" %}'></script>
+        <script src='{% static "js/moment-locale/"|add:LANGUAGE_CODE|add:".js" %}'></script>
         <script src='{% static "js/bbsittingsharing.js" %}'></script>
         {% block scripts %}{% endblock %}
     </head>
     <body>
+        <img id="tasdanimaux" src="{% static 'tasdanimaux.png' %}" alt=""></div>
         <header>
             {% if user.is_authenticated %}
             <nav>
@@ -31,7 +32,8 @@
             {% endif %}
             <h1>
                 <a href="{% url 'index' %}">Bbsitting sharing</a>
-                <div>by Echos Kids</div>
+                <br>
+                <img id="byechokids" src="{% static 'byechokids.png' %}" alt="by Echos Kids" />
             </h1>
         </header>
         
