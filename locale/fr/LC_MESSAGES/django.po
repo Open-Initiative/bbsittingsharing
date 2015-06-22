@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-22 21:12+0000\n"
+"POT-Creation-Date: 2015-06-22 21:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Activate users"
 msgstr "Activer les utilisateurs"
 
-#: bbsittingsharing/forms.py:16
+#: bbsittingsharing/forms.py:15
 msgid "I have read and agree to the Terms of Service"
 msgstr "J'ai lu et j'accepte les conditions d'utilisation"
 
-#: bbsittingsharing/forms.py:17
+#: bbsittingsharing/forms.py:16
 msgid "You must agree to the terms to register"
 msgstr "Vous devez accepter les conditions d'utilisation"
 
@@ -51,7 +51,11 @@ msgstr ""
 "Cette adresse e-mail est déjà utilisée. Merci d'utiliser une adresse "
 "différente."
 
-#: bbsittingsharing/forms.py:65
+#: bbsittingsharing/forms.py:54
+msgid "Other"
+msgstr ""
+
+#: bbsittingsharing/forms.py:69
 msgid "Referee"
 msgstr "Filleul"
 
@@ -74,7 +78,7 @@ msgstr "Nom de l'école :"
 
 #: bbsittingsharing/models.py:39
 msgid "Usual bbsitter"
-msgstr "Nom dub bsitter habituel"
+msgstr "Nom du bsitter habituel"
 
 #: bbsittingsharing/models.py:40
 #: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:33

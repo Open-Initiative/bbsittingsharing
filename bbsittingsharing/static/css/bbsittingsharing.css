@@ -107,8 +107,12 @@ footer {
     text-align: center;
     font-weight: bold;
 }
+footer nav {
+    max-width: 800px;
+}
 footer ul {
     list-style-type: none;
+    padding: 0;
 }
 footer a {
     color: white;
@@ -190,10 +194,12 @@ img.parents {
     top: 40px;
 }
 #info {
-    width: 80%;
     margin: 4em auto 0 auto;
     color: #8c8c8c;
     text-align: justify;
+}
+#info div {
+    padding: 0 1.5em;
 }
 #info h4 {
     margin-bottom: 2em;
@@ -230,7 +236,7 @@ img.profile {
     max-width: 90%;
 }
 .profile-edit-help {
-    width: 50%;
+    width: 80%;
     margin: 1em auto;
     padding: 1em;
     text-align: center;

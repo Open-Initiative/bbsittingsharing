@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext as _
 
 from registration.users import UserModel
-from bbsittingsharing.models import BBSitting, Parent
+from bbsittingsharing.models import BBSitting, Parent, Equipment
 
 class ListSelect(forms.Select):
     """Override of select field to return a list for group choice"""
@@ -11,10 +11,10 @@ class ListSelect(forms.Select):
         return [super(ListSelect, self).value_from_datadict(data, files, name)]
 
 class ParentForm(UserCreationForm):
-    referer = forms.EmailField()
-    tos = forms.BooleanField(widget=forms.CheckboxInput,
-         label=_('I have read and agree to the Terms of Service'),
+    referer = forms.EmailField(label=_("Referer"))
+    tos = forms.BooleanField(label=_('I have read and agree to the Terms of Service'),
          error_messages={'required': _("You must agree to the terms to register")})
+    
     class Meta:
         model = UserModel()
         fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "email", "groups", "district", "referer")
@@ -51,10 +51,17 @@ class ParentForm(UserCreationForm):
         raise forms.ValidationError(self.error_messages['duplicate_username'], code='duplicate_username')
 
 class UpdateProfileForm(forms.ModelForm):
+    equipment = forms.ModelMultipleChoiceField(queryset = Equipment.objects.filter(default=True),
+        widget=forms.CheckboxSelectMultiple(), label=_("Available equipment"))
+    other_equipment = forms.CharField(label=_("Other"))
     class Meta:
         model = Parent
-        fields = ['first_name', 'last_name', 'email', 'phone', 'kidsnb', 'school', 'bbsitter', 'ok_at_home', 'ok_at_others', 'equipment', 'picture']
-        widgets = {'equipment': forms.CheckboxSelectMultiple()}
+        fields = ['first_name', 'last_name', 'email', 'phone', 'kidsnb', 'school', 'bbsitter', 'ok_at_home', 'ok_at_others', 'picture', 'equipment']
+    
+    def clean_other_equipment(self):
+        self.new_equipment = Equipment.objects.create(name = self.cleaned_data["other_equipment"], default=False)
+        self.cleaned_data["equipment"] = list(self.cleaned_data["equipment"])
+        self.cleaned_data["equipment"].append(self.new_equipment)
 
 class BBSittingForm(forms.ModelForm):
     class Meta:
