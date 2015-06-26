@@ -11,16 +11,19 @@ function stepCalendar(step) {
 }
 
 function renderDay(date, cell) {
-    var div = $("<div id='"+date.format()+"'>");
+    var div = $("<div class='"+date.format()+"'>");
     div.addClass("calendar-day");
-    div.html('<a href="/search?date='+ date.format() +'">'+ date.format("D") +'</a>');
+    div.html('<a href="/search?date='+ date.format() +'">'
+        +'<div class="detail"><span>0</span> bbsittings</div>'+ date.format("D") +'</a>');
     div.appendTo(cell);
     return false;
 }
 
 function renderEvent(event, element) {
-    var div = $("#"+event.start.format());
+    var div = $("."+event.start.format());
     div.addClass("booked");
+    var span = $(".detail span", div);
+    span.text(parseInt(span.text())+1);
     return false;
 }
 

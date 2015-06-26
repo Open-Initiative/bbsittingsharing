@@ -27,9 +27,9 @@
             {% if user.is_authenticated %}
             <nav>
                 <ul>
-                    <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
                     <li><a href="{% url 'index' %}">{% trans "My account" %}</a></li>
                     <li><a href="{% url 'refer' %}">{% trans "Refer" %}</a></li>
+                    <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
                 </ul>
             </nav>
             {% endif %}
@@ -50,7 +50,7 @@
                     <li class="col-md-3"><a href="{% url 'terms' %}">{% trans "Terms" %}</a></li>
                     <li class="col-md-3"><a href="{% url 'legal' %}">{% trans "Legal statement" %}</a></li>
                     <li class="col-md-3"><a href="{% url 'contact' %}">{% trans "Contact" %}</a></li>
-                    <li class="col-md-3"><a href="{% url 'info' %}">{% trans "Who are we?" %}</a></li>
+                    <li class="col-md-3"><a href="{% url 'info' %}">{% trans "How does it work?" %}</a></li>
                 </ul>
             </nav> 
         </footer>

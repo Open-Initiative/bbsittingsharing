@@ -276,6 +276,14 @@ img.profile {
 .fc-content-skeleton {
     display: none;
 }
+.fc-day:hover {
+    position: relative;
+    top: -5px;
+    left: -5px;
+    z-index: 5;
+    background: #f2f0ed;
+    box-shadow: 3px 3px 5px #8c8c8c;
+}
 .calendar-arrow {
     position: absolute;
     top: 50%;
@@ -288,46 +296,33 @@ img.profile {
     right: 0;
 }
 .calendar-day {
-    height: 18px;
-    width: 18px;
-    margin: 10px;
-    padding: 3px;
-    border-radius: 30px;
+    width: 24px;
+    height: 22px;
+    padding: 12px 9px;
     text-align: center;
 }
-.fc-day:hover {
-    position: relative;
-    top: -5px;
-    left: -5px;
-    z-index: 5;
-    background: #f2f0ed;
-}
 .calendar-day.booked {
-    background: #fc5151;
-    margin-top: 0;
+    position: relative;
+    top: -10px;
+    left: 10px;
+    background: url('/static/gouttepetiterouge.png') no-repeat;
+    background-size: 24px 32px;
+    padding: 5px 1px;
 }
 .calendar-day.booked a {
     color: white;
 }
-.calendar-day.booked::after {
-    content: " ";
-    position: relative;
-    border: solid 10px transparent;
-    border-top: solid 15px #fc5151;
-    top: 28px;
-    left: -20px;
+.calendar-day .detail {
+    display: none;
+    font-size: 50%;
 }
 .calendar-day.booked:hover {
-    height: 28px;
-    width: 28px;
-    margin: -25px 0;
-    padding: 8px;
-    transition-property: width, height, margin, padding;
+    width: 40px;
+    height: 52px;
+    background-size: 40px 56px;
+    transition-property: width, height, background-size;
     transition-duration: .1s;
 }
-.calendar-day.booked:hover::after {
-    top: 52px;
-    border-width: 25px 15px;
-    transition-property: top, left, border-width;
-    transition-duration: .1s;
+.calendar-day.booked:hover .detail {
+    display: block;
 }
