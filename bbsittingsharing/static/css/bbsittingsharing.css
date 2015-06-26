@@ -128,6 +128,7 @@ footer a {
     text-align: center;
 }
 .panelbtn {
+    width: 12em;
     background: #fc5151;
     border-bottom: 5px solid #cc3636;
     margin: 1em;
