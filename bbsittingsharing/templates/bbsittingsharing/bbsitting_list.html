@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load i18n %}
 {% load bbsitting_tags %}
 {% block scripts %}
@@ -21,9 +22,11 @@
     <div id="calendar-right" class="col-sm-6"></div>
     <div class="btn calendar-arrow right glyphicon glyphicon-menu-right" onclick="stepCalendar(+1)"></div>
     <div class="clearfix"></div>
-    <img src="{% static 'goutterouge.png' %}" alt="{% trans 'Red drop' %}">
-    {% trans "My dates" %}
-    <img src="{% static 'gouttebleue.png' %}" alt="{% trans 'Blue drop' %}">
-    {% trans "My group's dates" %}
+    <div class="legend">
+        <img class="drop" src="{% static 'goutterouge.png' %}" alt="{% trans 'Red drop' %}">
+        {% trans "My dates" %}
+        <img class="drop" src="{% static 'gouttebleue.png' %}" alt="{% trans 'Blue drop' %}">
+        {% trans "My group's dates" %}
+    </div>
 </div>
 {% endblock %}

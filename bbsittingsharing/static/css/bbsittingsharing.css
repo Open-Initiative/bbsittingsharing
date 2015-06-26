@@ -326,3 +326,10 @@ img.profile {
 .calendar-day.booked:hover .detail {
     display: block;
 }
+.drop {
+    width: 24px;
+    height: 32px;
+    margin-top: 1em;
+    margin-left: 3em;
+    vertical-align: -5px;
+}
