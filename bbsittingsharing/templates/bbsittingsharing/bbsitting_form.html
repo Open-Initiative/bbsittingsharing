@@ -2,15 +2,6 @@
 {% load staticfiles %}
 {% load i18n %}
 {% load bootstrap %}
-{% block scripts %}
-
-<script>
-    window.onload = function() {
-        $('#id_date').datetimepicker({format: "DD/MM/YYYY", locale: 'fr'});
-        $('#id_start').datetimepicker({format: 'HH:mm', locale: 'fr'});
-    };
-</script>
-{% endblock %}
 
 {% block content %}
 <div id="pagetitle">{% trans 'Propose a date' %}</div>

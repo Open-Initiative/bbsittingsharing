@@ -7,15 +7,18 @@
         <link rel='stylesheet' href='{% static "css/fullcalendar.css" %}' />
         <link rel='stylesheet' href='{% static "css/bootstrap.css" %}' />
         <link rel='stylesheet' href='{% static "css/bootstrap-theme.css" %}' />
-        <link rel='stylesheet' href='{% static "css/bootstrap-datepicker3.css" %}' />
         <link rel='stylesheet' href='{% static "css/bbsittingsharing.css" %}' />
         <script src='{% static "js/jquery.min.js" %}'></script>
         <script src='{% static "js/moment.min.js" %}'></script>
+        <script src='{% static "js/polyfiller.js" %}'></script>
         <script src='{% static "js/bootstrap.js" %}'></script>
-        <script src='{% static "js/bootstrap-datetimepicker.min.js" %}'></script>
         <script src='{% static "js/fullcalendar.js" %}'></script>
         <script src='{% static "js/moment-locale/"|add:LANGUAGE_CODE|add:".js" %}'></script>
         <script src='{% static "js/bbsittingsharing.js" %}'></script>
+        <script>
+            webshims.polyfill();
+            webshim.setOptions("forms-ext", {"date": {"startView": 2,"inlinePicker": true}});
+        </script>
         {% block scripts %}{% endblock %}
     </head>
     <body>

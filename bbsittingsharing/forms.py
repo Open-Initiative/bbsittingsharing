@@ -67,9 +67,12 @@ class BBSittingForm(forms.ModelForm):
     class Meta:
         model = BBSitting
         exclude = ['author', 'booked']
+        widgets = {'date': forms.TextInput(attrs={'type':'date'}),
+            'start': forms.TextInput(attrs={'type':'time', 'step': 900}),
+            'end'  : forms.TextInput(attrs={'type':'time', 'step': 900})}
 
 class ReferForm(forms.Form):
-    referee = forms.EmailField(label=_("Referee"))
+    referee = forms.EmailField(label=_("Please provide the email of the person you want to share bbsittings with"))
 
 class ContactForm(forms.Form):
     first_name = forms.CharField()

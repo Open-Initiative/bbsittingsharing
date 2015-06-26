@@ -6,20 +6,25 @@ from django.utils.translation import ugettext as _
 from bbsittingsharing import settings
 
 class BBSitting(models.Model):
-   date             = models.DateField(verbose_name=_("Date"))
-   start            = models.TimeField(verbose_name=_("Start"))
-   bbsitter_found   = models.BooleanField(verbose_name=_("Have you found a bbsitter?"))
-   at_authors       = models.BooleanField(verbose_name=_("Would you rather have the bbsitting at your place?"))
-   authors_children = models.IntegerField(verbose_name=_("How many children will be present on your side?"))
-   children_capacity= models.IntegerField(verbose_name=_("How many children will you share this bbsitting with at most?"))
-   author           = models.ForeignKey(settings.AUTH_USER_MODEL)
-   booked           = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Booking', related_name="booked")
+    date             = models.DateField(verbose_name=_("Date"))
+    start            = models.TimeField(verbose_name=_("Start"))
+    end              = models.TimeField(verbose_name=_("End"))
+    bbsitter_found   = models.BooleanField(verbose_name=_("Have you found a bbsitter?"))
+    at_authors       = models.BooleanField(verbose_name=_("Would you rather have the bbsitting at your place?"))
+    authors_children = models.IntegerField(verbose_name=_("How many children will be present on your side?"))
+    children_capacity= models.IntegerField(verbose_name=_("How many children will you share this bbsitting with at most?"))
+    author           = models.ForeignKey(settings.AUTH_USER_MODEL)
+    booked           = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Booking', related_name="booked")
    
-   def get_absolute_url(self):
-       return reverse('detail', args=[str(self.id)])
+    def is_booked(self):
+        """returns True if there is a booking confirmed on the bbsitting"""
+        return self.booking_set.filter(confirmed=True).count() > 0
+    
+    def get_absolute_url(self):
+        return reverse('detail', args=[str(self.id)])
        
-   def __unicode__(self):
-      return _("At %(author)s's on %(date)s %(with)s babysitter")%{'author':self.author.get_full_name(), 'date':self.date, 'with': 'with' if self.bbsitter_found else 'without'}
+    def __unicode__(self):
+        return _("At %(author)s's on %(date)s %(with)s babysitter")%{'author':self.author.get_full_name(), 'date':self.date, 'with': _('with') if self.bbsitter_found else _('without')}
 
 
 class Equipment(models.Model):

@@ -29,7 +29,7 @@
 
             <td>
             {% if bbsitting.author != user %}
-                {% if bbsitting.booked.count %}
+                {% if bbsitting.is_booked %}
                 <span class="btn bookbtn-full" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "not available" %}</span>
                 {% else %}
                 <a class="btn bookbtn" href="{% url 'book' bbsitting.pk %}" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "book" %}</a>

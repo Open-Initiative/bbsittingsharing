@@ -1,12 +1,5 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block scripts %}
-<script>
-    window.onload = function() {
-        $('#searchdate').datepicker({format: "yyyymmdd",todayHighlight: true})
-    };
-</script>
-{% endblock %}
 
 {% block content %}
 {% with parent|default:user as profile %}
@@ -47,6 +40,9 @@
     
     {% if profile == user %}
     <a class="btn panelbtn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
+    <div>
+        <a href="{% url 'auth_password_change' %}">{% trans "Change my password" %}</a>
+    </div>
     {% endif %}
 </div>
 <div class="col-sm-4 panel panel-margin">
@@ -78,7 +74,7 @@
     {% comment %}<input id="searchdate"/>
     <button class="btn panelbtn" onclick="document.location = '/search/'+document.getElementById('searchdate').value">{% trans 'Search' %}</button>{% endcomment %}
     <a class="btn panelbtn" href="{% url 'calendar' %}">{% trans "Calendar" %}</a>
-    <a class="btn panelbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
+    <a class="btn panelbtn pull-right" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
 </div>
 {% endif %}
 {% endwith %}

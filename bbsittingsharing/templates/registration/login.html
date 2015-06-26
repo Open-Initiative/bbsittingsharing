@@ -14,5 +14,7 @@
 
 <input class="btn panelbtn pull-right" type="submit" value="{% trans 'login' %}" />
 <input type="hidden" name="next" value="{{ next }}" />
+<div class="clearfix"></div>
+<a href="{% url 'auth_password_reset' %}">{% trans "I forgot my password" %}</a>
 </form>
 {% endblock %}
