@@ -305,7 +305,7 @@ img.profile {
     position: relative;
     top: -10px;
     left: 10px;
-    background: url('/static/gouttepetiterouge.png') no-repeat;
+    background: url('/static/goutterouge.png') no-repeat;
     background-size: 24px 32px;
     padding: 5px 1px;
 }
