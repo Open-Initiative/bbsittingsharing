@@ -1,0 +1,4 @@
+{% load i18n %}
+{% trans "Hello" %}.
+
+{% trans "Your account has been validated on BBSitting Sharing. You can now log in and share bbsittings!" %}

@@ -77,7 +77,7 @@ class BookView(LoginRequiredMixin, generic.TemplateView):
             HttpResponseForbidden
         try:
             booking = Booking.objects.create(bbsitting=bbsitting, parent=request.user)
-            notify(request, booking, 'book_request')
+            notify(request, booking, 'book_request', bbsitting.author)
         except IntegrityError:
             already_requested = True
         return super(BookView, self).get(request, recipient=bbsitting.author.get_full_name(), already_requested=already_requested)
