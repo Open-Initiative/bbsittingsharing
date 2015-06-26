@@ -11,8 +11,8 @@ class BBSitting(models.Model):
     end              = models.TimeField(verbose_name=_("End"))
     bbsitter_found   = models.BooleanField(verbose_name=_("Have you found a bbsitter?"))
     at_authors       = models.BooleanField(verbose_name=_("Would you rather have the bbsitting at your place?"))
-    authors_children = models.IntegerField(verbose_name=_("How many children will be present on your side?"))
-    children_capacity= models.IntegerField(verbose_name=_("How many children will you share this bbsitting with at most?"))
+    authors_children = models.PositiveIntegerField(verbose_name=_("How many children will be present on your side?"))
+    children_capacity= models.PositiveIntegerField(verbose_name=_("How many children will you share this bbsitting with at most?"))
     author           = models.ForeignKey(settings.AUTH_USER_MODEL)
     booked           = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Booking', related_name="booked")
    
@@ -41,7 +41,7 @@ class District(models.Model):
 
 class Parent(AbstractUser):
     phone       = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Phone number"))
-    kidsnb      = models.IntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
+    kidsnb      = models.PositiveIntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
     school      = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("School name"))
     bbsitter    = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Usual bbsitter"))
     ok_at_home  = models.BooleanField(default=True, verbose_name="Ok "+_("to host a bbsitting"))
