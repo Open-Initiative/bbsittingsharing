@@ -13,6 +13,8 @@ function stepCalendar(step) {
 function renderDay(date, cell) {
     var div = $("<div class='"+date.format()+"'>");
     div.addClass("calendar-day");
+    if(this.calendar.getDate().month()!=date.month())
+        div.addClass('other-month');
     div.html('<a href="/search?date='+ date.format() +'">'
         +'<div class="detail"><span>0</span> bbsittings</div>'+ date.format("D") +'</a>');
     div.appendTo(cell);

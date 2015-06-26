@@ -312,6 +312,9 @@ img.profile {
 .calendar-day.booked a {
     color: white;
 }
+.calendar-day.other-month a {
+    color: #8c8c8c;
+}
 .calendar-day .detail {
     display: none;
     font-size: 50%;
