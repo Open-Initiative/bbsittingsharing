@@ -118,6 +118,15 @@ footer a {
     color: white;
 }
 
+.btn-checkbox {
+    background: white;
+    font-weight: lighter;
+}
+.btn-checkbox.active {
+    background: #183c77;
+    color: white;
+    font-weight: bold;
+}
 .panel {
     padding: 2em;
     background: white;

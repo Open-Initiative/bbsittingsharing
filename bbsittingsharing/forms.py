@@ -17,8 +17,9 @@ class ParentForm(UserCreationForm):
     
     class Meta:
         model = UserModel()
-        fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "email", "groups", "district", "referer")
-        widgets = {'groups': ListSelect(), 'referer': forms.EmailInput()}
+        fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "female", "email", "groups", "district", "referer")
+        widgets = {'groups': ListSelect(), 'referer': forms.EmailInput(),
+            'female': forms.RadioSelect(choices=((True, _('a woman')), (False, _('a man'))))}
         labels = {'groups': _("Arrondissement")}
         help_texts = {'groups': None}
     
@@ -52,16 +53,19 @@ class ParentForm(UserCreationForm):
 
 class UpdateProfileForm(forms.ModelForm):
     equipment = forms.ModelMultipleChoiceField(queryset = Equipment.objects.filter(default=True),
-        widget=forms.CheckboxSelectMultiple(), label=_("Available equipment"))
+        required=False, widget=forms.CheckboxSelectMultiple(), label=_("Available equipment"))
     other_equipment = forms.CharField(label=_("Other"), required=False)
     class Meta:
         model = Parent
         fields = ['first_name', 'last_name', 'email', 'phone', 'kidsnb', 'school', 'bbsitter', 'ok_at_home', 'ok_at_others', 'picture', 'equipment']
+        widgets = {'ok_at_home': forms.RadioSelect(choices=((True, _('Yes')), (False, _('No')))),
+            'ok_at_others': forms.RadioSelect(choices=((True, _('Yes')), (False, _('No'))))}
     
     def clean_other_equipment(self):
-        self.new_equipment = Equipment.objects.create(name = self.cleaned_data["other_equipment"], default=False)
-        self.cleaned_data["equipment"] = list(self.cleaned_data["equipment"])
-        self.cleaned_data["equipment"].append(self.new_equipment)
+        if self.cleaned_data["other_equipment"]:
+            new_equipment = Equipment.objects.create(name = self.cleaned_data["other_equipment"], default=False)
+            self.cleaned_data["equipment"] = list(self.cleaned_data["equipment"])
+            self.cleaned_data["equipment"].append(new_equipment)
 
 class BBSittingForm(forms.ModelForm):
     class Meta:
@@ -69,7 +73,9 @@ class BBSittingForm(forms.ModelForm):
         exclude = ['author', 'booked']
         widgets = {'date': forms.TextInput(attrs={'type':'date'}),
             'start': forms.TextInput(attrs={'type':'time', 'step': 900}),
-            'end'  : forms.TextInput(attrs={'type':'time', 'step': 900})}
+            'end'  : forms.TextInput(attrs={'type':'time', 'step': 900}),
+            'bbsitter_found': forms.RadioSelect(choices=((True, _('Yes')), (False, _('No')))),
+            'at_authors': forms.Select(choices=((True, _('At my place')), (False, _('At someone else''s'))))}
 
 class ReferForm(forms.Form):
     referee = forms.EmailField(label=_("Please provide the email of the person you want to share bbsittings with"))

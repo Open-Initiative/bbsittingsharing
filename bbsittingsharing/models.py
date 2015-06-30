@@ -1,7 +1,9 @@
 from os.path import splitext
-from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
 from django.core.urlresolvers import reverse
+from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 from django.utils.translation import ugettext as _
 from bbsittingsharing import settings
 
@@ -46,6 +48,7 @@ class Parent(AbstractUser):
     bbsitter    = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Usual bbsitter"))
     ok_at_home  = models.BooleanField(default=True, verbose_name="Ok "+_("to host a bbsitting"))
     ok_at_others= models.BooleanField(default=True, verbose_name="Ok "+_("to go to someone else's place"))
+    female      = models.BooleanField(default=True, verbose_name=_("You are "))
     friends     = models.ManyToManyField("self", blank=True, null=True)
     referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True, verbose_name=_("Referer"))
     district    = models.ForeignKey(District, related_name="users", null=True, verbose_name=_("District"))
@@ -54,7 +57,7 @@ class Parent(AbstractUser):
     def picture_name(self, filename):
         """Generates the picture filename from the username"""
         return '%s%s'%(self.username, splitext(filename)[1])
-    picture     = models.ImageField(upload_to=picture_name, default="/static/user.png")
+    picture     = models.ImageField(upload_to=picture_name)
     
     def shared_nb(self):
         """Gets the number of babysittings the user has proposed and booked"""
@@ -65,6 +68,13 @@ class Parent(AbstractUser):
     
     def __unicode__(self):
         return self.get_full_name()
+
+@receiver(pre_save, sender=Parent)
+def select_default_picture(sender, instance, **kwargs):
+    """Selects the gendered profile picture before save"""
+    if not instance.id:
+        instance.picture =  "/static/user%s.png"%("F" if instance.female else "M")
+
 
 class Booking(models.Model):
     parent = models.ForeignKey(Parent)
