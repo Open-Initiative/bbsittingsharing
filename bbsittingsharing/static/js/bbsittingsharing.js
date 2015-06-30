@@ -31,7 +31,10 @@ function renderEvent(event, element) {
 
 function reloadWithGroup() {
     //Get url parameters
-    var params = JSON.parse('{"' + decodeURI(location.search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+    if(location.search)
+        var params = JSON.parse('{"' + decodeURI(location.search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+    else
+        var params = {};
     params.group = $('#id_groups').val();
     window.location = '//' + location.host + location.pathname + '?' + $.param(params);
 }
