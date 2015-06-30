@@ -23,8 +23,12 @@ class LoginRequiredMixin(object):
 class RegisterView(RegistrationView):
     """Override of the default backend to take the referer into account"""
     form_class = ParentForm
+    def get_form_kwargs(self, request=None, form_class=None):
+        kwargs = super(RegisterView, self).get_form_kwargs()
+        kwargs['group'] = self.request.GET.get('group')
+        return kwargs
     def get_initial(self):
-        return {'referer': self.request.GET.get('referer')}
+        return {'referer': self.request.GET.get('referer'), 'groups': self.request.GET.get('group')}
     def form_valid(self, request, form):
         """Adds the referer as a friend"""
         new_user = self.register(request, form)

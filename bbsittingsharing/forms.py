@@ -23,10 +23,15 @@ class ParentForm(UserCreationForm):
     class Meta:
         model = UserModel()
         fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "female", "email", "groups", "district", "school", "referer")
-        widgets = {'groups': ListSelect(), 'referer': forms.EmailInput(),
+        widgets = {'groups': ListSelect(attrs={'onchange': 'reloadWithGroup(this)'}), 'referer': forms.EmailInput(),
             'female': forms.RadioSelect(choices=((True, _('a woman')), (False, _('a man'))))}
         labels = {'groups': _("Arrondissement")}
         help_texts = {'groups': None}
+    
+    def __init__(self, group=None, **kwargs):
+        super(ParentForm, self).__init__(**kwargs)
+        self.fields['district'].queryset = self.fields['district'].queryset.filter(group=group)
+        self.fields['school'].queryset = self.fields['school'].queryset.filter(group=group)
     
     def clean_referer(self):
         """gets the referer if it exists or raise a form error"""

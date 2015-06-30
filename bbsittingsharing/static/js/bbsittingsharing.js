@@ -29,6 +29,13 @@ function renderEvent(event, element) {
     return false;
 }
 
+function reloadWithGroup() {
+    //Get url parameters
+    var params = JSON.parse('{"' + decodeURI(location.search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+    params.group = $('#id_groups').val();
+    window.location = '//' + location.host + location.pathname + '?' + $.param(params);
+}
+
 $(function() {
     var tasdanimaux = $("#tasdanimaux");
     $(document).scroll(function(e) {
