@@ -41,10 +41,15 @@ class District(models.Model):
     def __unicode__(self):
         return self.name
 
+class School(models.Model):
+    name = models.CharField(max_length=255)
+    group = models.ForeignKey(Group)
+    def __unicode__(self):
+        return self.name
+
 class Parent(AbstractUser):
     phone       = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Phone number"))
     kidsnb      = models.PositiveIntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
-    school      = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("School name"))
     bbsitter    = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Usual bbsitter"))
     ok_at_home  = models.BooleanField(default=True, verbose_name="Ok "+_("to host a bbsitting"))
     ok_at_others= models.BooleanField(default=True, verbose_name="Ok "+_("to go to someone else's place"))
@@ -52,6 +57,7 @@ class Parent(AbstractUser):
     friends     = models.ManyToManyField("self", blank=True, null=True)
     referer     = models.ForeignKey("self", related_name="referees", blank=True, null=True, verbose_name=_("Referer"))
     district    = models.ForeignKey(District, related_name="users", null=True, verbose_name=_("District"))
+    school      = models.ForeignKey(School, related_name="users", null=True, verbose_name=_("School"))
     equipment   = models.ManyToManyField(Equipment, blank=True, verbose_name=_("Equipment"))
     
     def picture_name(self, filename):

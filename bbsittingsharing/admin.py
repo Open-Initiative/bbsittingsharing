@@ -14,6 +14,7 @@ class ParentAdmin(admin.ModelAdmin):
     actions = [activate]
 
 admin.site.register(District)
+admin.site.register(School)
 admin.site.register(Parent, ParentAdmin)
 admin.site.register(BBSitting)
 admin.site.register(Booking)

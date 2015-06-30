@@ -17,7 +17,7 @@ class ParentForm(UserCreationForm):
     
     class Meta:
         model = UserModel()
-        fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "female", "email", "groups", "district", "referer")
+        fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "female", "email", "groups", "district", "school", "referer")
         widgets = {'groups': ListSelect(), 'referer': forms.EmailInput(),
             'female': forms.RadioSelect(choices=((True, _('a woman')), (False, _('a man'))))}
         labels = {'groups': _("Arrondissement")}
