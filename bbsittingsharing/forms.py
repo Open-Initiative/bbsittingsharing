@@ -7,10 +7,12 @@ from bbsittingsharing.models import BBSitting, Parent, Equipment
 
 class ListSelect(forms.Select):
     """Override of select field to return a list for group choice"""
-    def render(self, *args, **kwargs):
+    def render(self, name, value, **kwargs):
         """Adds an empty value for consistency with other model select fields"""
+        if isinstance(value, list):
+            value = value[0]
         self.choices.field.empty_label = "---------"
-        return super(ListSelect, self).render(*args, **kwargs)
+        return super(ListSelect, self).render(name, value, **kwargs)
     def value_from_datadict(self, data, files, name):
         """Transforms the single value returned into a list, so that it's managed by the manytomany field"""
         return [super(ListSelect, self).value_from_datadict(data, files, name)]
