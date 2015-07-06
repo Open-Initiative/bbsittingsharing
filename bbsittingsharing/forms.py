@@ -18,13 +18,14 @@ class ListSelect(forms.Select):
         return [super(ListSelect, self).value_from_datadict(data, files, name)]
 
 class ParentForm(UserCreationForm):
+    username = forms.CharField(widget=forms.HiddenInput, required=False)
     referer = forms.EmailField(label=_("Referer"))
     tos = forms.BooleanField(label=_('I have read and agree to the Terms of Service'),
          error_messages={'required': _("You must agree to the terms to register")})
     
     class Meta:
         model = UserModel()
-        fields = ('first_name', 'last_name', UserModel().USERNAME_FIELD, "female", "email", "groups", "district", "school", "referer")
+        fields = ('first_name', 'last_name', "female", UserModel().USERNAME_FIELD, "groups", "district", "school", "referer")
         widgets = {'groups': ListSelect(attrs={'onchange': 'reloadWithGroup(this)'}), 'referer': forms.EmailInput(),
             'female': forms.RadioSelect(choices=((True, _('a woman')), (False, _('a man'))))}
         labels = {'groups': _("Arrondissement")}
@@ -49,20 +50,13 @@ class ParentForm(UserCreationForm):
     def clean_email(self):
         """ Validate that the supplied email address is unique for the site."""
         if self.Meta.model.objects.filter(email__iexact=self.cleaned_data['email']):
-            raise forms.ValidationError(_("This email address is already in use. Please supply a different email address."))
+            raise forms.ValidationError(_("This email address is already in use. Please supply a different email address."), code='duplicate_username')
+        self.cleaned_data['username'] = self.cleaned_data['email']
         return self.cleaned_data['email']
-    
     def clean_username(self):
-        # Need to override since default checks unicity on auth table
-        # Since User.username is unique, this check is redundant,
-        # but it sets a nicer error message than the ORM. See #13147.
-        username = self.cleaned_data["username"]
-        try:
-            self.Meta.model._default_manager.get(username=username)
-        except self.Meta.model.DoesNotExist:
-            return username
-        raise forms.ValidationError(self.error_messages['duplicate_username'], code='duplicate_username')
-
+        "This function is required to overwrite an inherited username clean"
+        return self.cleaned_data['username']
+    
 class UpdateProfileForm(forms.ModelForm):
     equipment = forms.ModelMultipleChoiceField(queryset = Equipment.objects.filter(default=True),
         required=False, widget=forms.CheckboxSelectMultiple(), label=_("Available equipment"))

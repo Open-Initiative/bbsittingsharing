@@ -39,14 +39,14 @@
     <p><span class="number">{{profile.shared_nb}}</span> {% trans "bbsitting already shared" %}</p>
     
     {% if profile == user %}
-    <a class="btn panelbtn" href="{% url 'profile_edit' user.username %}">{% trans "Edit" %}</a>
+    <a class="btn panelbtn" href="{% url 'profile_edit' user.email %}">{% trans "Edit" %}</a>
     <div>
         <a href="{% url 'auth_password_change' %}">{% trans "Change my password" %}</a>
     </div>
     {% endif %}
 </div>
 <div class="col-sm-4 panel panel-margin">
-    <img class="profile" alt="{% blocktrans with name=profile.username%}{{username}}'s picture{% endblocktrans %} '" src="{{profile.picture.url}}" />
+    <img class="profile" alt="{% blocktrans with name=profile.get_full_name%}{{name}}'s picture{% endblocktrans %} '" src="{{profile.picture.url}}" />
 </div>
 
 {% if profile == user %}
@@ -54,7 +54,7 @@
     <h3>{% trans "My group" %}</h3>
     {% for user in user.friends.all|slice:":4" %}
     <div class="userlist pull-left">
-        <a href="{% url 'profile' user.username %}">
+        <a href="{% url 'profile' user.email %}">
             <img class="userthumb" src="{{user.picture.url}}" alt="{% blocktrans %}{{user}}'s picture{% endblocktrans %}" />
             {{user.get_full_name}}
         </a>

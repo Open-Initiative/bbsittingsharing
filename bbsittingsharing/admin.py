@@ -10,7 +10,7 @@ def activate(modeladmin, request, queryset):
 activate.short_description = _("Activate users")
 
 class ParentAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'referer', 'district', 'is_active')
+    list_display = ('email', 'referer', 'district', 'is_active')
     actions = [activate]
 
 admin.site.register(District)

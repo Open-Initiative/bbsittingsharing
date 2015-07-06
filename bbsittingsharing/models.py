@@ -59,6 +59,8 @@ class Parent(AbstractUser):
     district    = models.ForeignKey(District, related_name="users", null=True, verbose_name=_("District"))
     school      = models.ForeignKey(School, related_name="users", null=True, verbose_name=_("School"))
     equipment   = models.ManyToManyField(Equipment, blank=True, verbose_name=_("Equipment"))
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""
@@ -70,10 +72,11 @@ class Parent(AbstractUser):
         return self.bbsitting_set.count() + self.booked.count()
     
     def get_full_name(self):
-        return super(Parent, self).get_full_name() or self.username
+        return super(Parent, self).get_full_name() or self.email
     
     def __unicode__(self):
         return self.get_full_name()
+Parent._meta.get_field_by_name('email')[0]._unique=True
 
 @receiver(pre_save, sender=Parent)
 def select_default_picture(sender, instance, **kwargs):
