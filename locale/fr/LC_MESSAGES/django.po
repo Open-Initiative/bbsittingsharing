@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-06 11:43+0000\n"
+"POT-Creation-Date: 2015-07-06 12:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,24 +78,30 @@ msgid "Other"
 msgstr "Autre"
 
 #: bbsittingsharing/forms.py:73 bbsittingsharing/forms.py:74
-#: bbsittingsharing/forms.py:89
+#: bbsittingsharing/forms.py:90
 msgid "Yes"
 msgstr "Oui"
 
 #: bbsittingsharing/forms.py:73 bbsittingsharing/forms.py:74
-#: bbsittingsharing/forms.py:89
+#: bbsittingsharing/forms.py:90
 msgid "No"
 msgstr "Non"
 
-#: bbsittingsharing/forms.py:90
+#: bbsittingsharing/forms.py:83
+msgid ""
+"We can send an email directly to the bbsitter to make them book the date."
+msgstr ""
+"Nous pouvons envoyer un email directement à votre babysitter pour lui demander de réserver sa soirée."
+
+#: bbsittingsharing/forms.py:91
 msgid "At my place"
 msgstr "Chez moi"
 
-#: bbsittingsharing/forms.py:90
+#: bbsittingsharing/forms.py:91
 msgid "At someone elses"
 msgstr "Chez une autre personne"
 
-#: bbsittingsharing/forms.py:93
+#: bbsittingsharing/forms.py:94
 msgid ""
 "Please provide the email of the person you want to share bbsittings with"
 msgstr ""
@@ -488,21 +494,32 @@ msgstr ""
 
 #: bbsittingsharing/templates/notification/account_validated.txt:2
 #: bbsittingsharing/templates/notification/base.html:17
+#: bbsittingsharing/templates/notification/bbsitter_invite.txt:2
 #: bbsittingsharing/templates/notification/book_request.txt:2
 #: bbsittingsharing/templates/notification/book_validated.txt:2
 #: bbsittingsharing/templates/notification/refer_request.txt:2
 msgid "Hello"
 msgstr "Bonjour"
 
+#: bbsittingsharing/templates/notification/bbsitter_invite.html:4
+#: bbsittingsharing/templates/notification/bbsitter_invite.txt:4
 #: bbsittingsharing/templates/notification/book_request.html:4
-#: bbsittingsharing/templates/notification/book_request.txt:4
-msgid "wants to book the bbsitting on"
-msgstr "veut réserver le bbsitting du"
+msgid "has planned a babysitting on"
+msgstr "a prévu un babysitting le"
+
+#: bbsittingsharing/templates/notification/bbsitter_invite.html:4
+#: bbsittingsharing/templates/notification/bbsitter_invite.txt:4
+msgid "and would like you to take care of the children."
+msgstr "et voudrait que vous vous occupiez des enfants."
 
 #: bbsittingsharing/templates/notification/book_request.html:5
 #: bbsittingsharing/templates/notification/book_request.txt:5
 msgid "To validate it, please go to:"
 msgstr "Pour valider, merci d'aller à l'adresse suivante :"
+
+#: bbsittingsharing/templates/notification/book_request.txt:4
+msgid "wants to book the bbsitting on"
+msgstr "veut réserver le bbsitting du"
 
 #: bbsittingsharing/templates/notification/book_validated.html:4
 #: bbsittingsharing/templates/notification/book_validated.txt:4
@@ -510,43 +527,42 @@ msgid "has validated your booking for the bbsitting on"
 msgstr "a validé votre réservation pour le bbsitting du"
 
 #: bbsittingsharing/templates/notification/refer_request.html:6
+#: bbsittingsharing/templates/notification/refer_request.txt:4
 #, python-format
 msgid "%(referer)s offers you to become a member of"
 msgstr "%(referer)s vous propose de devenir membre du site de"
 
 #: bbsittingsharing/templates/notification/refer_request.html:9
+#: bbsittingsharing/templates/notification/refer_request.txt:8
 msgid ""
 "This website enables you to share babysittings with other members of the "
 "network, so that children gather to play with their friends, while parents "
 "go out with peace in mind and share the cost of a babysitter."
 msgstr ""
-"Le site permet de partager des babysittings avec des membres de son réseau, pour que les enfants se "
-"retrouvent pour jouer avec d’autres copains, pendant que les parents sortent l’esprit tranquille et "
-"partagent le cout d’un babysitting à deux familles !"
+"Le site permet de partager des babysittings avec des membres de son réseau, "
+"pour que les enfants se retrouvent pour jouer avec d’autres copains, pendant "
+"que les parents sortent l’esprit tranquille et partagent le cout d’un "
+"babysitting à deux familles !"
 
 #: bbsittingsharing/templates/notification/refer_request.html:10
+#: bbsittingsharing/templates/notification/refer_request.txt:9
 msgid ""
 "The families of this network are all refered by trustworthy people. So don't "
 "hesitate and get together to share a babysitting with your friends and the "
 "classmates' parents!"
 msgstr ""
-"Les familles membres de ce site sont toutes parrainées par des personnes de confiance. Alors n’hésitez plus et organisez-vous pour partager un babysitting avec vos amis et les parents des copains d’école !"
+"Les familles membres de ce site sont toutes parrainées par des personnes de "
+"confiance. Alors n’hésitez plus et organisez-vous pour partager un "
+"babysitting avec vos amis et les parents des copains d’école !"
 
 #: bbsittingsharing/templates/notification/refer_request.html:11
+#: bbsittingsharing/templates/notification/refer_request.txt:10
 msgid ""
 "Please go to the following adress and refer other trustworthy people, that's "
 "how the community will grow."
 msgstr ""
-"Rendez-vous à l’adresse suivante  et parrainez à votre tour ! C’est comme cela que la communauté grandira."
-
-#: bbsittingsharing/templates/notification/refer_request.txt:4
-#, python-format
-msgid ""
-"You have been invited by %(referer)s to join BBSitting Sharing.\n"
-"Please go to: "
-msgstr ""
-"Vous avez été invité par %(referer)s à rejoindre BBSitting Sharing.\n"
-"Merci d'aller à l'adresse suivante : "
+"Rendez-vous à l’adresse suivante  et parrainez à votre tour ! C’est comme "
+"cela que la communauté grandira."
 
 #: bbsittingsharing/templates/registration/activation_complete.html:4
 msgid "Your registration is now complete. Thanks!"

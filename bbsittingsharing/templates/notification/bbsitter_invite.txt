@@ -1,0 +1,4 @@
+{% load i18n %}
+{% trans "Hello" %},
+
+{{booking.bbsitting.author.get_full_name}} {% trans "has planned a babysitting on" %} {{booking.bbsitting.date}} {% trans "and would like you to take care of the children." %}.

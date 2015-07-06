@@ -14,7 +14,7 @@
 <img src="http://{{request.get_host}}{% static 'tasdanimaux.png' %}" style="width: 70px; clip: rect(0px, 100px, 400px, 0px); position: absolute;" />
 <img src="http://{{request.get_host}}{% static 'parents.png' %}" style="width: 100px; float:right; margin-top: 200px;" />
 <div style="margin-left: 120px; color:#183c77;font-family: 'Gotham',Helvetica,Arial,sans-serif;">
-    <p>{% trans "Hello" %} {{recipient.get_full_name}},</p>
+    <p>{% trans "Hello" %},</p>
 
     {% block content %}{% endblock %}
 </div>

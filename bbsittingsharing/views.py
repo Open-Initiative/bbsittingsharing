@@ -69,6 +69,7 @@ class CreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         """If the form is valid, save the associated models"""
         form.instance.author = self.request.user
+        notify(self.request, form.instance, 'bbsitter_invite', form.cleaned_data['bbsitter'])
         return super(CreateView, self).form_valid(form)
 
 class BookView(LoginRequiredMixin, generic.TemplateView):
@@ -81,7 +82,7 @@ class BookView(LoginRequiredMixin, generic.TemplateView):
             HttpResponseForbidden
         try:
             booking = Booking.objects.create(bbsitting=bbsitting, parent=request.user)
-            notify(request, booking, 'book_request', bbsitting.author)
+            notify(request, booking, 'book_request', bbsitting.author.email)
         except IntegrityError:
             already_requested = True
         return super(BookView, self).get(request, recipient=bbsitting.author.get_full_name(), already_requested=already_requested)

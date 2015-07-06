@@ -1,0 +1,5 @@
+{% extends 'notification/base.html'%}
+{% load i18n %}
+{% block content %}
+<p>{{booking.bbsitting.author.get_full_name}} {% trans "has planned a babysitting on" %} {{booking.bbsitting.date}} {% trans "and would like you to take care of the children." %}.</p>
+{% endblock %}

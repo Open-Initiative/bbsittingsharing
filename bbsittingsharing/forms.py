@@ -80,6 +80,7 @@ class UpdateProfileForm(forms.ModelForm):
             self.cleaned_data["equipment"].append(new_equipment)
 
 class BBSittingForm(forms.ModelForm):
+    bbsitter = forms.EmailField(label=_("We can send an email directly to the bbsitter to make them book the date."))
     class Meta:
         model = BBSitting
         exclude = ['author', 'booked']

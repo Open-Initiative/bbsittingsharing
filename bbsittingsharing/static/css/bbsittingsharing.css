@@ -249,6 +249,19 @@ img.parents {
     font-style: oblique;
 }
 
+label[for=id_bbsitter]::before {
+    content: "✉";
+    position: relative;
+    top: 5px;
+    display: inline-block;
+    margin: 0 .5em;
+    line-height: 1;
+    font-size: 150%;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: normal;
+}
+
 img.profile {
     max-width: 90%;
 }
