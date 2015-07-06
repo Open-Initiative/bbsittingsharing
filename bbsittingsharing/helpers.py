@@ -13,6 +13,6 @@ def send_email(recipients, subject, template_name, email_context={}):
     msg.send()
 
 def notify(request, booking, template_name, user=None):
-    user = user or request.user
-    email_context = RequestContext(request, {'from': user.get_full_name(), 'booking': booking})
-    send_email([user.email], 'hello', template_name, email_context)
+    recipient = user or request.user
+    email_context = RequestContext(request, {'recipient': recipient, 'booking': booking})
+    send_email([recipient.email], 'hello', template_name, email_context)

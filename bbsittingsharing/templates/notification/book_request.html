@@ -1,5 +1,7 @@
+{% extends 'notification/base.html'%}
 {% load i18n %}
-<p>{% trans "Hello" %}.</p>
-<p>{{from}} {% trans "wants to book the bbsitting on" %} {{booking.bbsitting.date}}.</p>
+{% block content %}
+<p>{{request.user.get_full_name}} {% trans "wants to book the bbsitting on" %} {{booking.bbsitting.date}}.</p>
 <p>{% trans "To validate it, please go to:" %}
 http://{{request.get_host}}{% url 'validate' pk=booking.bbsitting.pk booking_pk=booking.pk %}</p>
+{% endblock %}

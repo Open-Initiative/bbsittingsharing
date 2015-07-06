@@ -1,3 +1,5 @@
+{% extends 'notification/base.html'%}
 {% load i18n %}
-<p>{% trans "Hello" %}.</p>
+{% block content %}
 <p>{% trans "Your account has been validated on BBSitting Sharing. You can now log in and share bbsittings!" %}</p>
+{% endblock %}

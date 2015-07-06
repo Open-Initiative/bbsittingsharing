@@ -1,6 +1,11 @@
 {% load i18n %}
 {% trans "Hello" %}.
 
-{% blocktrans %}You have been invited by {{referer}} to join BBSitting Sharing.
-Please go to: {% endblocktrans %}
+{% blocktrans %}{{referer}} offers you to become a member of{% endblocktrans %} Bbsitting sharing by Echos Kids :
+http://{{request.get_host}}{% url 'index' %}
+
+
+{% blocktrans %}This website enables you to share babysittings with other members of the network, so that children gather to play with their friends, while parents go out with peace in mind and share the cost of a babysitter.{% endblocktrans %}
+{% blocktrans %}The families of this network are all refered by trustworthy people. So don't hesitate and get together to share a babysitting with your friends and the classmates' parents!{% endblocktrans %}
+{% blocktrans %}Please go to the following adress and refer other trustworthy people, that's how the community will grow.{% endblocktrans %}
 http://{{request.get_host}}{% url 'registration_register' %}?referer={{referer.email}}

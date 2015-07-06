@@ -1,6 +1,13 @@
+{% extends 'notification/base.html'%}
 {% load i18n %}
-<p>{% trans "Hello" %}.</p>
+{% load staticfiles %}
 
-<p>{% blocktrans %}You have been invited by {{referer}} to join BBSitting Sharing.
-Please go to: {% endblocktrans %}
-http://{{request.get_host}}{% url 'registration_register' %}?referer={{referer.email}}</p>
+{% block content %}
+    <p>{% blocktrans %}{{referer}} offers you to become a member of{% endblocktrans %} <a style="margin: auto; width: 20em; text-align: center; color: #fc5151; color: #183c77; text-transform: uppercase; font-weight: bold; font-size: .8em; letter-spacing: 3px;" href="http://{{request.get_host}}{% url 'index' %}">Bbsitting sharing</a>
+    <br>
+    <img style="width: 120px;" src="http://{{request.get_host}}{% static 'byechokids.png' %}" alt="by Echos Kids" /></p>
+    <p>{% blocktrans %}This website enables you to share babysittings with other members of the network, so that children gather to play with their friends, while parents go out with peace in mind and share the cost of a babysitter.{% endblocktrans %}</p>
+    <p>{% blocktrans %}The families of this network are all refered by trustworthy people. So don't hesitate and get together to share a babysitting with your friends and the classmates' parents!{% endblocktrans %}</p>
+    <p>{% blocktrans %}Please go to the following adress and refer other trustworthy people, that's how the community will grow.{% endblocktrans %}</p>
+    http://{{request.get_host}}{% url 'registration_register' %}?referer={{referer.email}}</p>
+{% endblock %}
