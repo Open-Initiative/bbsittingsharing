@@ -122,12 +122,12 @@ msgstr "Fin"
 
 #: bbsittingsharing/models.py:14
 msgid "Have you found a bbsitter?"
-msgstr "Avez-vous trouvé un bbsitter ?"
+msgstr "Avez-vous trouvé un(e) babysitter ?"
 
 #: bbsittingsharing/models.py:15
 msgid "Would you rather have the bbsitting at your place?"
 msgstr ""
-"Souhaitez vous que le bbsitting ait lieu chez vous ou chez les autres "
+"Souhaitez vous que le babysitting ait lieu chez vous ou chez les autres "
 "parents ?"
 
 #: bbsittingsharing/models.py:16
@@ -137,7 +137,7 @@ msgstr "Combien d’enfants seront présents de votre côté ?"
 #: bbsittingsharing/models.py:17
 msgid "How many children will you share this bbsitting with at most?"
 msgstr ""
-"Avec combien d’enfants souhaitez-vous partager ce bbsitting au maximum ?"
+"Avec combien d’enfants souhaitez-vous partager ce babysitting, au maximum ?"
 
 #: bbsittingsharing/models.py:29
 #, python-format
@@ -162,7 +162,7 @@ msgstr "Nombre d'enfants"
 
 #: bbsittingsharing/models.py:53
 msgid "Usual bbsitter"
-msgstr "Nom du bsitter habituel"
+msgstr "Nom du babysitter habituel"
 
 #: bbsittingsharing/models.py:54
 #: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:27
@@ -261,7 +261,7 @@ msgstr "Conditions générales d'utilisation"
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:17
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_search.html:45
 #: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:78
-msgid "Propose a date"
+msgid "Propose a slot"
 msgstr "Proposer une date"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:15
@@ -273,7 +273,7 @@ msgstr "Calendrier"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:18
 msgid "Or click directly on a date to book a bbsitting"
-msgstr "Ou cliquez directement sur une date pour réserver un bbsitting"
+msgstr "Ou cliquez directement sur une date pour réserver un babysitting"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:26
 msgid "Red drop"
@@ -288,7 +288,7 @@ msgid "Blue drop"
 msgstr "Goutte bleue"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:29
-msgid "My group's dates"
+msgid "My group's slots"
 msgstr "Les dates de mon groupe"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_search.html:7
@@ -331,7 +331,7 @@ msgstr "Retour au calendrier"
 
 #: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:7
 msgid "You already requested to book this bbsitting!"
-msgstr "Vous avez déjà demandé de réserver ce bbsitting !"
+msgstr "Vous avez déjà demandé de réserver ce babysitting !"
 
 #: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:9
 msgid "You will be contacted directly. Thank you for your request."
@@ -339,7 +339,7 @@ msgstr "Vous serez contacté directement. Merci pour votre demande."
 
 #: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:9
 msgid "will receive an email and you'll receive the answer directly by email."
-msgstr "recevra un email et vous recevrez la réponse directement par email."
+msgstr "recevra un email et vous recevrez la réponse directement sur votre email."
 
 #: bbsittingsharing/templates/bbsittingsharing/book_confirm.html:10
 msgid ""
@@ -463,7 +463,7 @@ msgid ""
 "bbsitting sharing. No data is mandatory."
 msgstr ""
 "Vous pouvez ajouter des précisions dans votre profil pour mieux décrire vos "
-"besoins de partage de babysittings. Aucune donnée n'est obligatoire."
+"besoins de partage de babysitting. Aucune donnée n'est obligatoire."
 
 #: bbsittingsharing/templates/bbsittingsharing/refer.html:7
 msgid "Refer to a friend"
@@ -510,7 +510,7 @@ msgstr "a prévu un babysitting le"
 #: bbsittingsharing/templates/notification/bbsitter_invite.html:4
 #: bbsittingsharing/templates/notification/bbsitter_invite.txt:4
 msgid "and would like you to take care of the children."
-msgstr "et voudrait que vous vous occupiez des enfants."
+msgstr "et voudrait que vous vous gardiez les enfants."
 
 #: bbsittingsharing/templates/notification/book_request.html:5
 #: bbsittingsharing/templates/notification/book_request.txt:5
@@ -553,7 +553,7 @@ msgid ""
 msgstr ""
 "Les familles membres de ce site sont toutes parrainées par des personnes de "
 "confiance. Alors n’hésitez plus et organisez-vous pour partager un "
-"babysitting avec vos amis et les parents des copains d’école !"
+"babysitting avec les parents de votre réseau !"
 
 #: bbsittingsharing/templates/notification/refer_request.html:11
 #: bbsittingsharing/templates/notification/refer_request.txt:10
@@ -596,7 +596,7 @@ msgid ""
 "we'll send you an e-mail."
 msgstr ""
 "Comme le réseau repose sur la confiance, nous allons vérifier notre "
-"parrainage et vous allez recevoir un e-mail."
+"parrainage et vous recevrez un e-mail confirmant votre inscription."
 
 #: bbsittingsharing/templates/registration/registration_complete.html:7
 msgid "Thank you for your interest in BBSitting Sharing by Echos Kids."
