@@ -32,7 +32,7 @@
                 {% if bbsitting.is_booked %}
                 <span class="btn bookbtn-full" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "not available" %}</span>
                 {% else %}
-                <a class="btn bookbtn" href="{% url 'book' bbsitting.pk %}" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "book" %}</a>
+                <a class="btn bookbtn" href="{% url 'book' bbsitting.pk %}" onclick="return confirm('{% trans 'Send a request to' %} {{bbsitting.author.get_full_name}} ?')">{% trans "book" %}</a>
                 {% endif %}
             {% endif %}
             </td>

@@ -176,6 +176,9 @@ label {
 .panel .calendar-icon {
     width: 20px;
 }
+.date-search-results {
+    margin: 1em 0;
+}
 .date-search-results .glyphicon {
     color: #fc5151;
 }
