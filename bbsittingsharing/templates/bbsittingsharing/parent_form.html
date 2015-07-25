@@ -6,11 +6,12 @@
     {% trans "Edit my profile" %}
 </div>
 <div class="page-help">
-    {% trans "You can add details in your profile to better describe your needs of bbsitting sharing. No data is mandatory." %}
+    {% trans "You can add details in your profile to better describe your needs of bbsitting sharing." %}
 </div>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{form|bootstrap}}
+    <div class="clearfix"></div>
     <input class="btn panelbtn" type="submit">
 </form>
 {% endblock %}

@@ -15,7 +15,7 @@
                 {% trans "On" %} {{bbsitting.date}}
             </td>
             <td class="search-result">
-                <a href="{% url 'profile' bbsitting.author.username %}">{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</a>
+                <a href="{% url 'profile' bbsitting.author.email %}">{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</a>
                 <span class="result-details">
                     {% trans "From" %} {{bbsitting.start|date:"H:i"}}
                     Bbsitter

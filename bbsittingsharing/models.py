@@ -74,6 +74,9 @@ class Parent(AbstractUser):
     def get_full_name(self):
         return super(Parent, self).get_full_name() or self.email
     
+    def get_absolute_url(self):
+        return reverse('profile', args=[self.email])
+    
     def __unicode__(self):
         return self.get_full_name()
 Parent._meta.get_field_by_name('email')[0]._unique=True

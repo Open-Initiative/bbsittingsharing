@@ -6,7 +6,7 @@
 {% block content %}
 <div id="pagetitle">{% trans 'Propose a date' %}</div>
 
-<form method="post">
+<form method="post" id="bbsitting-form">
     {% csrf_token %}
     {{form|bootstrap}}
     <div class="clearfix"></div>

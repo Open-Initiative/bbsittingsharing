@@ -41,8 +41,9 @@ function reloadWithGroup() {
 
 $(function() {
     var tasdanimaux = $("#tasdanimaux");
+    if ($(this).scrollTop() > 420) tasdanimaux.addClass("scrolled");
     $(document).scroll(function(e) {
-        if ($(this).scrollTop() > 70) tasdanimaux.addClass("scrolled");
+        if ($(this).scrollTop() > 420) tasdanimaux.addClass("scrolled");
         else tasdanimaux.removeClass("scrolled");
     });
 });

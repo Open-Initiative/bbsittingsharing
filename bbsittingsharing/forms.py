@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
 from registration.users import UserModel
@@ -20,7 +21,8 @@ class ListSelect(forms.Select):
 class ParentForm(UserCreationForm):
     username = forms.CharField(widget=forms.HiddenInput, required=False)
     referer = forms.EmailField(label=_("Referer"))
-    tos = forms.BooleanField(label=_('I have read and agree to the Terms of Service'),
+    tos = forms.BooleanField(
+        label=mark_safe(_('I have read and agreed to the <a href="/terms">Terms of Service</a>')),
          error_messages={'required': _("You must agree to the terms to register")})
     
     class Meta:
@@ -60,7 +62,7 @@ class ParentForm(UserCreationForm):
 class UpdateProfileForm(forms.ModelForm):
     equipment = forms.ModelMultipleChoiceField(queryset = Equipment.objects.filter(default=True),
         required=False, widget=forms.CheckboxSelectMultiple(), label=_("Available equipment"))
-    other_equipment = forms.CharField(label=_("Other"), required=False)
+    other_equipment = forms.CharField(label=_("Other equipment"), required=False)
     class Meta:
         model = Parent
         fields = ['first_name', 'last_name', 'email', 'phone', 'kidsnb', 'school', 'bbsitter', 'ok_at_home', 'ok_at_others', 'picture', 'equipment']
@@ -74,7 +76,7 @@ class UpdateProfileForm(forms.ModelForm):
             self.cleaned_data["equipment"].append(new_equipment)
 
 class BBSittingForm(forms.ModelForm):
-    bbsitter = forms.EmailField(label=_("We can send an email directly to the bbsitter to make them book the date."))
+    bbsitter = forms.EmailField(label=_("We can send an email directly to the bbsitter to make them book the date."), required=False)
     class Meta:
         model = BBSitting
         exclude = ['author', 'booked']

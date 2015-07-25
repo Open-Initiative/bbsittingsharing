@@ -8,6 +8,6 @@ def deploy():
     with cd('bbsittingsharing'):
         run("git pull origin master")
         run("git merge master")
-        run("./manage.py syncdb")
+#        run("./manage.py syncdb")
         run("./manage.py compilemessages")
         run("./manage.py collectstatic")
