@@ -71,6 +71,16 @@ class Parent(AbstractUser):
         """Gets the number of babysittings the user has proposed and booked"""
         return self.bbsitting_set.count() + self.booked.count()
     
+    def get_requested(self):
+        """Gets all the babysittings the user has requested, waited for a confirmation"""
+        return BBSitting.objects.filter(booked=self).filter(booking__confirmed=False)
+    def get_confirmed(self):
+        """Gets all the babysittings for which the user has received a confirmation"""
+        return BBSitting.objects.filter(booked=self).filter(booking__confirmed=True)
+    def get_group_bbsittings(self):
+        """Gets all the bbsittings of the group without the user's"""
+        return BBSitting.objects.filter(author__groups=self.groups.first()).exclude(author=self).exclude(booking__parent=self)
+    
     def get_full_name(self):
         return super(Parent, self).get_full_name() or self.email
     

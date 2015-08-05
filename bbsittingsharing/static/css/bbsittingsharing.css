@@ -359,15 +359,24 @@ img.profile {
     padding: 12px 9px;
     text-align: center;
 }
-.calendar-day.booked {
+.calendar-day.bbsitting {
     position: relative;
     top: 6px;
     left: 10px;
-    background: url('/static/goutterouge.png') no-repeat;
     background-size: 24px 32px;
+    background-repeat: no-repeat;
     padding: 5px 1px;
 }
-.calendar-day.booked a {
+.calendar-day.booked {
+    background-image: url('/static/goutterougesombre.png');
+}
+.calendar-day.request {
+    background-image: url('/static/goutterouge.png');
+}
+.calendar-day.group {
+    background-image: url('/static/gouttebleue.png');
+}
+.calendar-day.bbsitting a {
     color: white;
 }
 .calendar-day.other-month a {
@@ -377,7 +386,7 @@ img.profile {
     display: none;
     font-size: 50%;
 }
-.calendar-day.booked:hover {
+.calendar-day.bbsitting:hover {
     width: 40px;
     height: 52px;
     top: 0;
@@ -386,7 +395,7 @@ img.profile {
     transition-property: width, height, top, left, background-size;
     transition-duration: .1s;
 }
-.calendar-day.booked:hover .detail {
+.calendar-day.bbsitting:hover .detail {
     display: block;
 }
 .drop {

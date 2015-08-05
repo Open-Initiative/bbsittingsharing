@@ -1,32 +1,48 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 {% load i18n %}
-{% load bbsitting_tags %}
-{% block scripts %}
-<script>
-    $(document).ready(function() {
-        $('#calendar-right').fullCalendar({lang: 'fr', 'events': {{bbsitting_list|bbjson}}, height: 350, eventRender: renderEvent, dayRender: renderDay});
-        $('#calendar-left').fullCalendar({lang: 'fr', 'events': {{bbsitting_list|bbjson}}, height: 350, 'viewRender': syncCalendars, eventRender: renderEvent, dayRender: renderDay});
-    });
-</script>
-{% endblock %}
+
 {% block content %}
 <div id="pagetitle">
-    {% trans "Calendar" %}
+    {% trans "Calendar +/- 3 days around the" %} {{selected_date|date:"l j F Y"}}
 </div>
-<div class="text-center"><a class="btn panelbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a></div>
-<div class="page-help">{% trans "Or click directly on a date to book a bbsitting" %}</div>
-<div class="panel calendarpanel">
-    <div class="btn calendar-arrow left glyphicon glyphicon-menu-left" onclick="stepCalendar(-1)"></div>
-    <div id="calendar-left" class="col-sm-6"></div>
-    <div id="calendar-right" class="col-sm-6"></div>
-    <div class="btn calendar-arrow right glyphicon glyphicon-menu-right" onclick="stepCalendar(+1)"></div>
+
+<div class="panel">
+    <table class="date-search-results">
+    {%for bbsitting in bbsitting_list %}
+        <tr{% if bbsitting = selected_bbsitting %} class="search-result-selected"{% endif %}>
+            <td>
+                {% trans "On" %} {{bbsitting.date}}
+            </td>
+            <td class="search-result">
+                <a href="{% url 'profile' bbsitting.author.email %}">{% blocktrans with name=bbsitting.author.get_full_name %}At {{name}}'s{% endblocktrans %}</a>
+                <span class="result-details">
+                    {% trans "From" %} {{bbsitting.start|date:"H:i"}}
+                    Bbsitter
+                    {% if bbsitting.bbsitter_found %}
+                    <span class="glyphicon glyphicon-ok"></span>
+                    {% else %}
+                    <span class="glyphicon glyphicon-remove"></span>
+                    {% endif %}
+                </span>
+            </td>
+
+            <td>
+            {% if bbsitting.author != user %}
+                {% if bbsitting.is_booked %}
+                <span class="btn bookbtn-full" title="{{bbsitting.booked.count}} {% trans "spots booked out of" %} {{bbsitting.children_capacity}}">{% trans "not available" %}</span>
+                {% else %}
+                <a class="btn bookbtn" href="{% url 'book' bbsitting.pk %}" onclick="return confirm('{% trans 'Send a request to' %} {{bbsitting.author.get_full_name}} ?')">{% trans "book" %}</a>
+                {% endif %}
+            {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        {% trans "No bbsitting found near that date." %}
+    {% endfor %}
+    </table>
+    <a class="btn panelbtn pull-left" href="{% url 'calendar' %}">{% trans "Back to the calendar" %}</a>
+    <a class="btn panelbtn pull-right" href="{% url 'new' %}">{% trans "Propose a date" %}</a>
     <div class="clearfix"></div>
-    <div class="legend">
-        <img class="drop" src="{% static 'goutterouge.png' %}" alt="{% trans 'Red drop' %}">
-        {% trans "My dates" %}
-        <img class="drop" src="{% static 'gouttebleue.png' %}" alt="{% trans 'Blue drop' %}">
-        {% trans "My group's dates" %}
-    </div>
 </div>
 {% endblock %}

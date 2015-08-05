@@ -39,7 +39,6 @@ class RegisterView(RegistrationView):
 class SearchView(LoginRequiredMixin, generic.ListView):
     """Searches all baby sittings close to a date"""
     model = BBSitting
-    template_name = "bbsittingsharing/bbsitting_search.html"
     def dispatch(self, request, *args, **kwargs):
         if self.request.GET.get('date'):
             self.bbsitting = None

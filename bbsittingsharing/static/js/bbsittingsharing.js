@@ -23,7 +23,8 @@ function renderDay(date, cell) {
 
 function renderEvent(event, element) {
     var div = $("."+event.start.format());
-    div.addClass("booked");
+    div.addClass("bbsitting");
+    div.addClass(event.className[0]);
     var span = $(".detail span", div);
     span.text(parseInt(span.text())+1);
     return false;
