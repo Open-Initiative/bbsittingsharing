@@ -29,7 +29,7 @@ class ParentForm(UserCreationForm):
     class Meta:
         model = UserModel()
         fields = ('first_name', 'last_name', "female", UserModel().USERNAME_FIELD, "groups", "district", "school", "referer")
-        widgets = {'groups': ListSelect(attrs={'onchange': 'reloadWithGroup(this)'}), 'referer': forms.EmailInput(),
+        widgets = {'groups': ListSelect(attrs={'onchange': 'reloadWithParams(this.form)'}), 'referer': forms.EmailInput(),
             'female': forms.RadioSelect(choices=((True, _('a woman')), (False, _('a man'))))}
         labels = {'groups': _("Arrondissement")}
         help_texts = {'groups': None}

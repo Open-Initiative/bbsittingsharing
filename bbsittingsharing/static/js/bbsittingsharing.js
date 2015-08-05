@@ -30,13 +30,16 @@ function renderEvent(event, element) {
     return false;
 }
 
-function reloadWithGroup() {
+function reloadWithParams(form) {
     //Get url parameters
     if(location.search)
         var params = JSON.parse('{"' + decodeURI(location.search.substring(1)).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
     else
         var params = {};
-    params.group = $('#id_groups').val();
+    $(form).serializeArray().forEach(function(field) {
+        if(!field.name.startsWith("csrf"))
+            params[field.name] = field.value;
+    });
     window.location = '//' + location.host + location.pathname + '?' + $.param(params);
 }
 

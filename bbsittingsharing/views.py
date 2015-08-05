@@ -28,7 +28,7 @@ class RegisterView(RegistrationView):
         kwargs['group'] = self.request.GET.get('group')
         return kwargs
     def get_initial(self):
-        return {'referer': self.request.GET.get('referer'), 'groups': self.request.GET.get('group')}
+        return dict(zip(self.request.GET.keys(), self.request.GET.values()))
     def form_valid(self, request, form):
         """Adds the referer as a friend"""
         new_user = self.register(request, form)
