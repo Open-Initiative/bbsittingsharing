@@ -85,7 +85,7 @@ class BBSittingForm(forms.ModelForm):
             'start': forms.TextInput(attrs={'type':'time', 'step': 900}),
             'end'  : forms.TextInput(attrs={'type':'time', 'step': 900}),
             'bbsitter_found': forms.RadioSelect(choices=((True, _('Yes')), (False, _('No')))),
-            'at_authors': forms.Select(choices=((True, _('At my place')), (False, _('At someone else''s'))))}
+            'at_authors': forms.Select(choices=((True, _('At my place')), (False, _('At someone else''s')), (None, _('I don''t care'))))}
 
 class ReferForm(forms.Form):
     referee = forms.EmailField(label=_("Please provide the email of the person you want to share bbsittings with"))

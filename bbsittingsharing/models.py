@@ -1,5 +1,5 @@
 from os.path import splitext
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser, Group, UserManager
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save
@@ -12,7 +12,7 @@ class BBSitting(models.Model):
     start            = models.TimeField(verbose_name=_("Start"))
     end              = models.TimeField(verbose_name=_("End"))
     bbsitter_found   = models.BooleanField(verbose_name=_("Have you found a bbsitter?"))
-    at_authors       = models.BooleanField(verbose_name=_("Would you rather have the bbsitting at your place?"))
+    at_authors       = models.NullBooleanField(verbose_name=_("Would you rather have the bbsitting at your place?"))
     authors_children = models.PositiveIntegerField(verbose_name=_("How many children will be present on your side?"))
     children_capacity= models.PositiveIntegerField(verbose_name=_("How many children will you share this bbsitting with at most?"))
     author           = models.ForeignKey(settings.AUTH_USER_MODEL)
@@ -47,6 +47,11 @@ class School(models.Model):
     def __unicode__(self):
         return self.name
 
+
+class ParentManager(UserManager):
+    def create_superuser(self, email, password, **extra_fields):
+        return super(ParentManager, self).create_superuser(email, email, password, **extra_fields)
+
 class Parent(AbstractUser):
     phone       = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Phone number"))
     kidsnb      = models.PositiveIntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
@@ -61,6 +66,7 @@ class Parent(AbstractUser):
     equipment   = models.ManyToManyField(Equipment, blank=True, verbose_name=_("Equipment"))
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    objects = ParentManager()
     
     def picture_name(self, filename):
         """Generates the picture filename from the username"""
@@ -90,6 +96,7 @@ class Parent(AbstractUser):
     def __unicode__(self):
         return self.get_full_name()
 Parent._meta.get_field_by_name('email')[0]._unique=True
+Parent._meta.get_field_by_name('username')[0]._unique = False
 
 @receiver(pre_save, sender=Parent)
 def select_default_picture(sender, instance, **kwargs):
