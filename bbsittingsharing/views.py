@@ -25,7 +25,7 @@ class RegisterView(RegistrationView):
     form_class = ParentForm
     def get_form_kwargs(self, request=None, form_class=None):
         kwargs = super(RegisterView, self).get_form_kwargs()
-        kwargs['group'] = self.request.GET.get('group')
+        kwargs['group'] = self.request.GET.get('groups')
         return kwargs
     def get_initial(self):
         return dict(zip(self.request.GET.keys(), self.request.GET.values()))
@@ -68,7 +68,8 @@ class CreateView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         """If the form is valid, save the associated models"""
         form.instance.author = self.request.user
-        notify(self.request, form.instance, 'bbsitter_invite', form.cleaned_data['bbsitter'])
+        if form.cleaned_data['bbsitter']:
+            notify(self.request, form.instance, 'bbsitter_invite', form.cleaned_data['bbsitter'])
         return super(CreateView, self).form_valid(form)
 
 class BookView(LoginRequiredMixin, generic.TemplateView):
