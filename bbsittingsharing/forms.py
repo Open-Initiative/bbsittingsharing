@@ -1,3 +1,4 @@
+from datetime import date
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.safestring import mark_safe
@@ -80,7 +81,7 @@ class BBSittingForm(forms.ModelForm):
     class Meta:
         model = BBSitting
         exclude = ['author', 'booked']
-        widgets = {'date': forms.TextInput(attrs={'type':'date'}),
+        widgets = {'date': forms.TextInput(attrs={'type':'date', 'min':date.today().isoformat()}),
             'start': forms.TextInput(attrs={'type':'time', 'step': 900}),
             'end'  : forms.TextInput(attrs={'type':'time', 'step': 900}),
             'bbsitter_found': forms.RadioSelect(choices=((True, _('Yes')), (False, _('No')))),
