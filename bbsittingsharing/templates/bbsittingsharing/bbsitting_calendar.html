@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% load bbsitting_tags %}
+{% block scripts %}
+<script>
+    function mapClassName(events, className) {
+        return events.map(function(event) {
+            event.className = [className];
+            return event;
+        });
+    }
+    $(document).ready(function() {
+        events = mapClassName({{user.bbsitting_set.all|bbjson}}, "booked");
+        events = events.concat(mapClassName({{user.get_confirmed|bbjson}}, "booked"));
+        events = events.concat(mapClassName({{user.get_requested|bbjson}}, "request"));
+        events = events.concat(mapClassName({{user.get_group_bbsittings|bbjson}}, "group"));
+        $('#calendar-right').fullCalendar({lang: 'fr', 'events': events, height: 350, eventRender: renderEvent, dayRender: renderDay});
+        $('#calendar-left').fullCalendar({lang: 'fr', 'events': events, height: 350, 'viewRender': syncCalendars, eventRender: renderEvent, dayRender: renderDay});
+    });
+</script>
+{% endblock %}
+{% block content %}
+<div id="pagetitle">
+    {% trans "Calendar" %}
+</div>
+<div class="text-center"><a class="btn panelbtn" href="{% url 'new' %}">{% trans "Propose a date" %}</a></div>
+<div class="page-help">{% trans "Or click directly on a date to book a bbsitting" %}</div>
+<div class="panel calendarpanel">
+    <div class="btn calendar-arrow left glyphicon glyphicon-menu-left" onclick="stepCalendar(-1)"></div>
+    <div id="calendar-left" class="col-sm-6"></div>
+    <div id="calendar-right" class="col-sm-6"></div>
+    <div class="btn calendar-arrow right glyphicon glyphicon-menu-right" onclick="stepCalendar(+1)"></div>
+    <div class="clearfix"></div>
+    <div class="legend">
+        <img class="drop" src="{% static 'goutterougesombre.png' %}" alt="{% trans 'Red drop' %}">
+        {% trans "My dates" %}
+        <img class="drop" src="{% static 'goutterouge.png' %}" alt="{% trans 'Red drop' %}">
+        {% trans "My requested dates" %}
+        <img class="drop" src="{% static 'gouttebleue.png' %}" alt="{% trans 'Blue drop' %}">
+        {% trans "My group's dates" %}
+    </div>
+</div>
+{% endblock %}
