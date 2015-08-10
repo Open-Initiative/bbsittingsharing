@@ -1,11 +1,11 @@
 from glob import glob
 import csv, json, io
 
-outfile = io.open("bbsittingsharing/fixtures/initial_data.json", "w+", encoding="utf-8")
+outfile = io.open("initial_data.json", "w", encoding="utf-8")
 
 object_list = []
-for filename in glob('bbsittingsharing/fixtures/*.csv'):
-    if filename == 'bbsittingsharing/fixtures/group.csv':
+for filename in glob('*.csv'):
+    if filename == 'group.csv':
         model = 'auth.group'
     else:
         model = "bbsittingsharing." + filename.split('/')[-1].split('.')[0]

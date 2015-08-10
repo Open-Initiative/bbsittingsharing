@@ -1,4 +1,5 @@
 group,name
+1,Pas encore inscrit à l'école
 1,ECOLE MATERNELLE SOURDIÈRE
 1,ECOLE POLYVALENTE CAMBON
 1,ECOLE MATERNELLE SAINT-GERMAIN L'AUXERROIS
@@ -7,6 +8,7 @@ group,name
 1,ECOLE POLYVALENTE CAMBON
 1,Cours Privé du Bouloi
 1,École Privée Notre Dame Saint Roch
+2,Pas encore inscrit à l'école
 2,ECOLE MATERNELLE DUSSOUBS
 2,ECOLE MATERNELLE VIVIENNE
 2,ECOLE MATERNELLE SAINT-DENIS
@@ -16,6 +18,7 @@ group,name
 2,ECOLE POLYVALENTE BEAUREGARD
 2,ECOLE ÉLÉMENTAIRE DE LOUVOIS
 2,École Privée Saint-Sauveur - Bonne-Nouvelle
+3,Pas encore inscrit à l'école
 3,ECOLE MATERNELLE BRANTOME
 3,ECOLE MATERNELLE TURENNE
 3,ECOLE MATERNELLE CHAPON
@@ -28,6 +31,7 @@ group,name
 3,ECOLE ÉLÉMENTAIRE QUATRE-FILS
 3,ECOLE ÉLÉMENTAIRE DE TURENNE
 3,École Privée Sainte-Geneviève du Marais
+4,Pas encore inscrit à l'école
 4,ECOLE MATERNELLE FAUCONNIER
 4,ECOLE MATERNELLE ARCHIVES
 4,ECOLE POLYVALENTE SAINT-MERRI
@@ -45,6 +49,7 @@ group,name
 4,École Privée Saint-Merri
 4,École Privée des Francs-Bourgeois
 4,École Privée Massillon
+5,Pas encore inscrit à l'école
 5,ECOLE MATERNELLE CUJAS
 5,ECOLE MATERNELLE BUFFON
 5,ECOLE MATERNELLE LYONNAIS
@@ -66,6 +71,7 @@ group,name
 5,École Privée Primaire Mixte Sainte-Catherine
 5,École Privée Sœur-Rosalie
 5,École Sainte-Geneviève
+6,Pas encore inscrit à l'école
 6,ECOLE MATERNELLE MADAME
 6,ECOLE MATERNELLE LITTRE
 6,ECOLE MATERNELLE SAINT-ANDRÉ DES ARTS
@@ -80,6 +86,7 @@ group,name
 6,École Primaire Bossuet 
 6,École Privée Stanislas
 6,Notre Dame de Sion - École Privée Sainte-Marie-Sion
+7,Pas encore inscrit à l'école
 7,ECOLE POLYVALENTE CHOMEL
 7,ECOLE MATERNELLE EBLE
 7,ECOLE MATERNELLE RAPP
@@ -98,6 +105,7 @@ group,name
 7,École Nouvelle St-Thomas-d'Aquin 
 7,École Privée Sainte-Clotilde
 7,École Privée Sainte-Clotilde
+8,Pas encore inscrit à l'école
 8,ECOLE MATERNELLE BIENFAISANCE
 8,ECOLE MATERNELLE MOSCOU
 8,ECOLE MATERNELLE ROQUEPINE
@@ -114,6 +122,7 @@ group,name
 8,École Privée Saint-Pierre-de-Chaillot 
 8,Cours Hattemer
 8,EIB Monceau
+9,Pas encore inscrit à l'école
 9,ECOLE MATERNELLE BLANCHE
 9,ECOLE MATERNELLE BRUXELLES
 9,ECOLE MATERNELLE BUFFAULT
@@ -137,6 +146,7 @@ group,name
 9,"Wikids, Middle & Lower School"
 9,École Privée Notre-Dame-de-Lorette
 9,École Privée Catholique La Trinité
+10,Pas encore inscrit à l'école
 10,ECOLE MATERNELLE LOUIS BLANC
 10,ECOLE MATERNELLE BELZUNCE
 10,ECOLE MATERNELLE DE L'AQUEDUC
@@ -171,6 +181,7 @@ group,name
 10,École Privée Saint-Laurent
 10,"La Canopée, Ecole privée bilingue"
 10,École Privée Rocroy Saint-Vincent de Paul
+11,Pas encore inscrit à l'école
 11,ECOLE MATERNELLE FAIDHERBE
 11,ECOLE MATERNELLE GODEFROY CAVAIGNAC
 11,ECOLE MATERNELLE MERLIN
@@ -208,6 +219,7 @@ group,name
 11,École Privée Sainte Marguerite
 11,École Privée Charles Péguy
 11,École Privée Saint-Paul
+12,Pas encore inscrit à l'école
 12,ECOLE MATERNELLE JACQUES HILLAIRET
 12,ECOLE MATERNELLE BERCY
 12,ECOLE MATERNELLE D'ARTAGNAN
@@ -251,6 +263,7 @@ group,name
 12,École Privée Saint-Pierre-Fourier
 12,Ensemble Scolaire Saint Michel de Picpus - Ecole
 12,École Privée Saint-Éloi
+13,Pas encore inscrit à l'école
 13,ECOLE MATERNELLE DE CHOISY
 13,ECOLE MATERNELLE CROULEBARBE
 13,ECOLE MATERNELLE VINCENT AURIOL
@@ -298,6 +311,7 @@ group,name
 13,École Privée Mixte Primaire Sainte-Jeanne-d'Arc 
 13,"Groupe Scolaire Notre-Dame-de-France, École Privée Catholique "
 13,École Privée Catholique La Salle Notre-Dame de la Gare 
+14,Pas encore inscrit à l'école
 14,ECOLE MATERNELLE BOULARD
 14,ECOLE MATERNELLE JACQUIER
 14,ECOLE MATERNELLE D'ALÉSIA (190)
@@ -338,6 +352,7 @@ group,name
 14,École Privée du Sacré-Cœur 
 14,École Privée Charles-de-Foucauld 
 14,École Privée Maternelle et Primaire Mixte Ste-Élisabeth-de-Plaisance
+15,Pas encore inscrit à l'école
 15,ECOLE MATERNELLE MADEMOISELLE
 15,ECOLE MATERNELLE VAUGIRARD
 15,ECOLE MATERNELLE FRANÇOIS COPPÉE
@@ -409,6 +424,7 @@ group,name
 15,École Privée Mixte Les Saints-Anges
 15,École Primaire Saint-Louis
 15,Ecole Diwan de  (Skol Diwan )
+16,Pas encore inscrit à l'école
 16,ECOLE MATERNELLE CHARDON LAGACHE
 16,ECOLE MATERNELLE PERCHAMPS
 16,ECOLE MATERNELLE PAUL VALÉRY
@@ -452,6 +468,7 @@ group,name
 16,École Privée Catholique Gerson
 16,École Privée Saint-Louis-de-Gonzague - Franklin
 16,"Ecole Galilée, Maternelle et Primaire"
+17,Pas encore inscrit à l'école
 17,ECOLE MATERNELLE DES TAPISSERIES
 17,ECOLE MATERNELLE BAYEN
 17,ECOLE MATERNELLE EPINETTES
@@ -507,6 +524,7 @@ group,name
 17,École Privée Mixte Blanche-de-Castille
 17,"Ensemble Scolaire Sainte-Ursule - Louise-de-Bettignies, École Privée"
 17,"Ensemble Scolaire Sainte-Ursule - Louise-de-Bettignies, École Privée"
+18,Pas encore inscrit à l'école
 18,ECOLE MATERNELLE FERDINAND FLOCON
 18,ECOLE MATERNELLE JOSEPH DE MAISTRE
 18,ECOLE POLYVALENTE RENÉ BINET (ECOLE A)
@@ -582,6 +600,7 @@ group,name
 18,Groupe Scolaire La Madone - École Privée Sainte-Marie 
 18,École Privée Saint-Louis
 18,École Privée Mixte Maternelle et Primaire Saint Bernard - Sainte Marie
+19,Pas encore inscrit à l'école
 19,ECOLE MATERNELLE ARCHEREAU (68)
 19,ECOLE MATERNELLE THIONVILLE
 19,ECOLE MATERNELLE BOIS
@@ -660,6 +679,7 @@ group,name
 19,École Privée Mixte Saint-Georges
 19,École Privée Sainte-Thérèse
 19,École Privée Sainte-Thérèse
+20,Pas encore inscrit à l'école
 20,ECOLE MATERNELLE DES AMANDIERS
 20,ECOLE MATERNELLE BRETONNEAU
 20,ECOLE MATERNELLE PLANCHAT
