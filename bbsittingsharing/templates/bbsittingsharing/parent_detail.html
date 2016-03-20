@@ -57,7 +57,7 @@
     <p>{{profile.phone|default:_("No phone number provided")}}</p>
     <p>{% trans "Arrondissement" %}: <span class="value">{{profile.groups.first|default:_("None")}}</span></p>
     <p>{% trans "District" %}: <span class="value">{{profile.district|default:_("None")}}</span></p>
-    <p>{% trans "School" %}: <span class="value">{{profile.school|default:_("None")}}</span></p>
+    <p><span class="value">{{profile.school|default:_("None")}}</span></p>
     <p>
         <span class="number">{{profile.kidsnb|default:0}}</span>
         {% blocktrans count counter=profile.kidsnb|default:0 %}kid{% plural %}kids{% endblocktrans %}
