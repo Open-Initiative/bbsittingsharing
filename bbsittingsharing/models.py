@@ -53,7 +53,7 @@ class ParentManager(UserManager):
         return super(ParentManager, self).create_superuser(email, email, password, **extra_fields)
 
 class Parent(AbstractUser):
-    phone       = models.CharField(max_length=20, blank=True, null=True, verbose_name=_("Phone number"))
+    phone       = models.CharField(max_length=20, blank=False, null=True, verbose_name=_("Phone number"))
     kidsnb      = models.PositiveIntegerField(blank=True, null=True, verbose_name=_("Number of kids"))
     bbsitter    = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Usual bbsitter"))
     ok_at_home  = models.BooleanField(default=True, verbose_name="Ok "+_("to host a bbsitting"))
@@ -95,6 +95,9 @@ class Parent(AbstractUser):
     
     def __unicode__(self):
         return self.get_full_name()
+Parent._meta.get_field_by_name('email')[0].blank=False
+Parent._meta.get_field_by_name('first_name')[0].blank=False
+Parent._meta.get_field_by_name('last_name')[0].blank=False
 Parent._meta.get_field_by_name('email')[0]._unique=True
 Parent._meta.get_field_by_name('username')[0]._unique = False
 
