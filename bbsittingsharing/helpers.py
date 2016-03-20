@@ -12,7 +12,7 @@ def send_email(recipients, subject, template_name, email_context=Context()):
         msg.attach_alternative(html_content, "text/html")
     msg.send()
 
-def notify(request, booking, template_name, recipient=None):
+def notify(request, booking, subject, template_name, recipient=None):
     recipient = recipient or request.user.email
     email_context = RequestContext(request, {'booking': booking})
-    send_email([recipient], 'hello', template_name, email_context)
+    send_email([recipient], subject, template_name, email_context)

@@ -1,4 +1,6 @@
 {% load i18n %}
 {% trans "Hello" %}.
 
-{% trans "Your account has been validated on BBSitting Sharing. You can now log in and share bbsittings!" %}
+{% trans "Your account has been validated on BBSitting Sharing. You can now log in, complete your profile and share bbsittings with your friends and neighbours!" %}
+
+{% trans "Just go to" %} http://{{request.get_host}}/

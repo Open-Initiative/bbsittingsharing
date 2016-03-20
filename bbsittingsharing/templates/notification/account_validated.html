@@ -1,5 +1,6 @@
 {% extends 'notification/base.html'%}
 {% load i18n %}
 {% block content %}
-<p>{% trans "Your account has been validated on BBSitting Sharing. You can now log in and share bbsittings!" %}</p>
+<p>{% trans "Your account has been validated on BBSitting Sharing. You can now log in, complete your profile and share bbsittings with your friends and neighbours!" %}</p>
+<p>{% trans "Just go to" %}<a href="http://{{request.get_host}}/">http://{{request.get_host}}/</a></p>
 {% endblock %}

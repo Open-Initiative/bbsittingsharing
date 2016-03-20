@@ -6,7 +6,7 @@ from bbsittingsharing.helpers import send_email
 def activate(modeladmin, request, queryset):
     queryset.update(is_active=True)
     recipients = [user.email for user in queryset.all()]
-    send_email(recipients, _("BBSitting sharing: Account validated"), "account_validated")
+    send_email(recipients, _("Welcome to") +" Bbsitting sharing by Echos Kids", "account_validated")
 activate.short_description = _("Activate users")
 
 class ParentAdmin(admin.ModelAdmin):

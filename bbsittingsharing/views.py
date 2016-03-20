@@ -69,7 +69,8 @@ class CreateView(LoginRequiredMixin, generic.CreateView):
         """If the form is valid, save the associated models"""
         form.instance.author = self.request.user
         if form.cleaned_data['bbsitter']:
-            notify(self.request, form.instance, 'bbsitter_invite', form.cleaned_data['bbsitter'])
+            subject = "%s vous propose de réaliser un babysitting sur bbsitting sharing by Echos Kids"%self.request.user.get_full_name()
+            notify(self.request, form.instance, subject, 'bbsitter_invite', form.cleaned_data['bbsitter'])
         return super(CreateView, self).form_valid(form)
 
 class BookView(LoginRequiredMixin, generic.TemplateView):
@@ -79,10 +80,11 @@ class BookView(LoginRequiredMixin, generic.TemplateView):
         bbsitting = BBSitting.objects.get(pk=pk)
         already_requested = False
         if bbsitting.author==request.user:
-            HttpResponseForbidden
+            return HttpResponseForbidden()
         try:
             booking = Booking.objects.create(bbsitting=bbsitting, parent=request.user)
-            notify(request, booking, 'book_request', bbsitting.author.email)
+            subject = "Demande de participation au bbsitting"
+            notify(request, booking, subject, 'book_request', bbsitting.author.email)
         except IntegrityError:
             already_requested = True
         return super(BookView, self).get(request, recipient=bbsitting.author.get_full_name(), already_requested=already_requested)
@@ -97,7 +99,8 @@ class ValidateView(LoginRequiredMixin, generic.TemplateView):
             raise Http404
         booking.validated = True
         booking.save()
-        notify(request, booking, 'book_validated')
+        subject = "Validation du bbsitting"
+        notify(request, booking, subject, 'book_validated')
         return super(ValidateView, self).get(request, booking=booking)
 
 class FriendsView(LoginRequiredMixin, generic.ListView):
@@ -120,5 +123,6 @@ class ReferView(LoginRequiredMixin, generic.edit.FormView):
     def form_valid(self, form):
         email_context = RequestContext(self.request, {'referer': self.request.user})
         recipient = form.cleaned_data['referee']
-        send_email([recipient], 'hello', 'refer_request', email_context)
+        subject = 'Un ami, %s, vous propose de devenir membre de Bbsitting sharing'%self.request.user.get_full_name()
+        send_email([recipient], subject, 'refer_request', email_context)
         return super(ReferView, self).form_valid(form)
