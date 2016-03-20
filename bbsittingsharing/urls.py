@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from models import BBSitting, Parent
-from forms import UpdateProfileForm, ContactForm
+from forms import ContactForm
 from views import *
 
 from django.contrib import admin
@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^refer$', ReferView.as_view(), name="refer"),
     url(r'^refer_confirm$', generic.TemplateView.as_view(template_name="bbsittingsharing/refer_confirm.html"), name="refer_confirm"),
     url(r'^users/(?P<slug>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/$', login_required(generic.DetailView.as_view(model=Parent, slug_field='email')), name="profile"),
-    url(r'^users/(?P<slug>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/edit$', login_required(generic.UpdateView.as_view(model=Parent, slug_field='email', form_class=UpdateProfileForm)), name="profile_edit"),
+    url(r'^users/(?P<slug>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/edit$', UpdateProfileView.as_view(), name="profile_edit"),
     url(r'^register/$', RegisterView.as_view(), name='registration_register'),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^info$', generic.TemplateView.as_view(template_name="info.html"), name="info"),

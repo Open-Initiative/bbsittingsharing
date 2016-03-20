@@ -10,8 +10,8 @@ from django.views import generic
 from registration.backends.default.views import RegistrationView
 
 from helpers import notify, send_email
-from models import BBSitting, Booking, Parent
-from forms import BBSittingForm, ReferForm, ParentForm
+from models import BBSitting, Booking, Parent, School
+from forms import BBSittingForm, ReferForm, ParentForm, UpdateProfileForm
 
 class LoginRequiredMixin(object):
     """Ensures the user is logged in to access the view"""
@@ -36,6 +36,15 @@ class RegisterView(RegistrationView):
         if form.cleaned_data.get('referer'):
             new_user.friends.add(form.cleaned_data['referer'])
         return redirect(self.get_success_url())
+
+class UpdateProfileView(LoginRequiredMixin, generic.UpdateView):
+    model = Parent
+    slug_field = 'email'
+    form_class = UpdateProfileForm
+    def get_form(self, form_class=None):
+        form = super(UpdateProfileView, self).get_form(form_class)
+        form.fields["school"].queryset = School.objects.filter(group=self.request.user.groups.first())
+        return form
 
 class SearchView(LoginRequiredMixin, generic.ListView):
     """Searches all baby sittings close to a date"""
