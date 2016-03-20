@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-10 09:53+0000\n"
+"POT-Creation-Date: 2016-03-20 18:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: bbsittingsharing/admin.py:9
-msgid "BBSitting sharing: Account validated"
-msgstr "BBSitting Sharing : Compte validé"
+msgid "Welcome to"
+msgstr "Bienvenue chez"
 
 #: bbsittingsharing/admin.py:10
 msgid "Activate users"
@@ -31,7 +31,8 @@ msgstr "Parrain"
 
 #: bbsittingsharing/forms.py:26
 msgid "I have read and agreed to the <a href=\"/terms\">Terms of Service</a>"
-msgstr "J'ai lu et j'accepte les <a href=\"/terms\">conditions d'utilisation</a>"
+msgstr ""
+"J'ai lu et j'accepte les <a href=\"/terms\">conditions d'utilisation</a>"
 
 #: bbsittingsharing/forms.py:27
 msgid "You must agree to the terms to register"
@@ -190,7 +191,6 @@ msgid "District"
 msgstr "Quartier"
 
 #: bbsittingsharing/models.py:65
-#: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:61
 msgid "School"
 msgstr "École"
 
@@ -198,7 +198,7 @@ msgstr "École"
 msgid "Equipment"
 msgstr "Matériel"
 
-#: bbsittingsharing/models.py:115
+#: bbsittingsharing/models.py:118
 #, python-format
 msgid "%(parent)s's booking for %(bbsitting)s"
 msgstr "réservation de %(parent)s pour %(bbsitting)s"
@@ -258,7 +258,7 @@ msgstr "Se connecter"
 msgid "Who are we?"
 msgstr "Qui sommes-nous ?"
 
-#: bbsittingsharing/templates/info.html:25
+#: bbsittingsharing/templates/info.html:23
 msgid "Keep cool"
 msgstr "Soyez serein"
 
@@ -303,7 +303,7 @@ msgstr "Goutte bleue"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_calendar.html:41
 msgid "My group's dates"
-msgstr "Les dates de mon groupe"
+msgstr "Les dates dans mon groupe"
 
 #: bbsittingsharing/templates/bbsittingsharing/bbsitting_list.html:7
 msgid "Calendar +/- 3 days around the"
@@ -426,6 +426,7 @@ msgid "Your planned babysittings"
 msgstr "Dates à venir"
 
 #: bbsittingsharing/templates/bbsittingsharing/parent_detail.html:31
+#, python-format
 msgid "%(name)s's picture"
 msgstr "photo de %(name)s"
 
@@ -519,11 +520,16 @@ msgstr ""
 #: bbsittingsharing/templates/notification/account_validated.html:4
 #: bbsittingsharing/templates/notification/account_validated.txt:4
 msgid ""
-"Your account has been validated on BBSitting Sharing. You can now log in and "
-"share bbsittings!"
+"Your account has been validated on BBSitting Sharing. You can now log in, "
+"complete your profile and share bbsittings with your friends and neighbours!"
 msgstr ""
 "Votre compte a été validé sur BBSitting Sharing. Vous pouvez maintenant vous "
-"connecter et partager des bbsittings !"
+"connecter, compléter votre profil et partager des bbsittings avec vos amis et vos voisins !"
+
+#: bbsittingsharing/templates/notification/account_validated.html:5
+#: bbsittingsharing/templates/notification/account_validated.txt:6
+msgid "Just go to"
+msgstr "Allez à"
 
 #: bbsittingsharing/templates/notification/account_validated.txt:2
 #: bbsittingsharing/templates/notification/base.html:17
