@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse_lazy
