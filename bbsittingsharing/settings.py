@@ -67,6 +67,7 @@ SEND_ACTIVATION_EMAIL = False
 LOGIN_REDIRECT_URL = '/'
 INCLUDE_REGISTER_URL = False
 AUTH_USER_MODEL = 'bbsittingsharing.Parent'
+DEFAULT_FROM_EMAIL = 'laurence@echoskids.com'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
